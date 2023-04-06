@@ -1,7 +1,5 @@
+#include "includes.h"
 
-#include "proyecto_ed.h"
-
-#include <QApplication>
 
 
 int main(int argc, char *argv[])

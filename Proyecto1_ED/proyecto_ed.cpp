@@ -1,6 +1,5 @@
+#include "includes.h"
 
-#include "proyecto_ed.h"
-#include "./ui_proyecto_ed.h"
 
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)

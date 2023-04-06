@@ -1,0 +1,9 @@
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/Proyecto1_ED.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/Proyecto1_ED_autogen_timestamp_deps.dir
+C:/Users/Charlie/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/Proyecto1_ED_autogen.dir
