@@ -1,0 +1,89 @@
+{
+	"cmake" : 
+	{
+		"generator" : 
+		{
+			"multiConfig" : false,
+			"name" : "Ninja"
+		},
+		"paths" : 
+		{
+			"cmake" : "C:/Users/Andrey/Desktop/Insta/6.4.3/Boot2Qt/imx8mm-lpddr4-evk/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/cmake.exe",
+			"cpack" : "C:/Users/Andrey/Desktop/Insta/6.4.3/Boot2Qt/imx8mm-lpddr4-evk/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/cpack.exe",
+			"ctest" : "C:/Users/Andrey/Desktop/Insta/6.4.3/Boot2Qt/imx8mm-lpddr4-evk/toolchain/sysroots/x86_64-w64-mingw32/usr/bin/ctest.exe",
+			"root" : "C:/Users/Andrey/Desktop/Insta/6.4.3/Boot2Qt/imx8mm-lpddr4-evk/toolchain/sysroots/x86_64-w64-mingw32/usr/share/cmake-3.22"
+		},
+		"version" : 
+		{
+			"isDirty" : false,
+			"major" : 3,
+			"minor" : 22,
+			"patch" : 3,
+			"string" : "3.22.3",
+			"suffix" : ""
+		}
+	},
+	"objects" : 
+	[
+		{
+			"jsonFile" : "codemodel-v2-78bf71e1a8ab3bdf054e.json",
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 3
+			}
+		},
+		{
+			"jsonFile" : "cache-v2-ff9e53f4ae360fda6cf2.json",
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		{
+			"jsonFile" : "cmakeFiles-v1-f686374a9db496d30216.json",
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		}
+	],
+	"reply" : 
+	{
+		"cache-v2" : 
+		{
+			"jsonFile" : "cache-v2-ff9e53f4ae360fda6cf2.json",
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		"cmakeFiles-v1" : 
+		{
+			"jsonFile" : "cmakeFiles-v1-f686374a9db496d30216.json",
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		},
+		"codemodel-v2" : 
+		{
+			"jsonFile" : "codemodel-v2-78bf71e1a8ab3bdf054e.json",
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 3
+			}
+		}
+	}
+}

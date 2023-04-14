@@ -19,6 +19,13 @@ set(PROJECT_SOURCES
         proyecto_ed.ui
         includes.h
         timeStamp.h
+        SubirAMemoriaArticulos.h
+        LeerPedidosClientes.h
+        BalanceadorDecisiones.h
+        ColaDeAlisto.h
+        ColaAlistados.h
+        ColaFacturacion.h
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -1,0 +1,5 @@
+
+#ifndef COLAALISTADOS_H
+#define COLAALISTADOS_H
+
+#endif // COLAALISTADOS_H

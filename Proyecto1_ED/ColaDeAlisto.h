@@ -1,0 +1,5 @@
+
+#ifndef COLADEALISTO_H
+#define COLADEALISTO_H
+
+#endif // COLADEALISTO_H
