@@ -1,0 +1,17 @@
+# ninja log v5
+37	1367	7033891227850252	Proyecto1_ED_autogen/timestamp	5de32626818bcfc6
+10048	10669	7033891320943538	Proyecto1_ED.exe	c6e4b6cfcbdc692f
+37	1367	7033891227850252	Proyecto1_ED_autogen/mocs_compilation.cpp	5de32626818bcfc6
+37	1367	7033891227850252	C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/Proyecto1_ED_autogen/mocs_compilation.cpp	5de32626818bcfc6
+37	1367	7033891227850252	C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/Proyecto1_ED_autogen/timestamp	5de32626818bcfc6
+1424	9694	7033891311403709	CMakeFiles/Proyecto1_ED.dir/Proyecto1_ED_autogen/mocs_compilation.cpp.obj	2c0e476408ddb0b5
+1421	9847	7033891312919172	CMakeFiles/Proyecto1_ED.dir/main.cpp.obj	42635642c6346cef
+1417	10047	7033891314902137	CMakeFiles/Proyecto1_ED.dir/proyecto_ed.cpp.obj	2aba782a83aa9fab
+14	1170	7033892162976247	Proyecto1_ED_autogen/timestamp	5de32626818bcfc6
+14	1170	7033892162976247	Proyecto1_ED_autogen/mocs_compilation.cpp	5de32626818bcfc6
+14	1170	7033892162976247	C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/Proyecto1_ED_autogen/timestamp	5de32626818bcfc6
+14	1170	7033892162976247	C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/build-Proyecto1_ED-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/Proyecto1_ED_autogen/mocs_compilation.cpp	5de32626818bcfc6
+1256	9554	7033892246818307	CMakeFiles/Proyecto1_ED.dir/Proyecto1_ED_autogen/mocs_compilation.cpp.obj	2c0e476408ddb0b5
+1253	9831	7033892249563244	CMakeFiles/Proyecto1_ED.dir/main.cpp.obj	42635642c6346cef
+1233	9995	7033892251176807	CMakeFiles/Proyecto1_ED.dir/proyecto_ed.cpp.obj	2aba782a83aa9fab
+9996	10758	7033892257926815	Proyecto1_ED.exe	c6e4b6cfcbdc692f

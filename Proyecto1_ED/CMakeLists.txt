@@ -25,6 +25,7 @@ set(PROJECT_SOURCES
         ColaDeAlisto.h
         ColaAlistados.h
         ColaFacturacion.h
+        CargarClientesMemoria.h
 
 )
 
