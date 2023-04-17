@@ -15,7 +15,8 @@ class FileRead : public QThread
             //std::cout<<"Inicia lectura" <<std::endl;
             std::filesystem::path directory_path("../pedidos");
             for (const auto& entry : std::filesystem::directory_iterator(directory_path)) {
-                QThread::sleep(5);
+                QThread::sleep(5); /*El numero se modifica por la cantidad de segundos que se quiera
+                esperar antes de leer de nuevo */
                 if (entry.is_regular_file()) {
                     std::ifstream file(entry.path());
 
