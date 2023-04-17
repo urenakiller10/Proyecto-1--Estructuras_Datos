@@ -20,7 +20,7 @@ class FileRead : public QThread
                     std::ifstream file(entry.path());
 
                     if (file.is_open()) {
-                        std::cout << "Contenido de " << entry.path().filename() << ":" << std::endl;
+                        //std::cout << "Contenido de " << entry.path().filename() << ":" << std::endl;
 
                         std::string line;
                         while (std::getline(file, line)) {
