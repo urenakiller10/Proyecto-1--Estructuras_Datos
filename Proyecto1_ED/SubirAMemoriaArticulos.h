@@ -17,7 +17,7 @@ struct Articulo {
 };
 
 void subirArticulos(list<Articulo>& articulos) {
-    ifstream archivo("C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/Articulos.txt");
+    ifstream archivo("../Articulos.txt"); //Reemplazar esto con el hilo
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo Articulos.txt" << endl;
         return;

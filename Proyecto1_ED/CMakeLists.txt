@@ -26,7 +26,7 @@ set(PROJECT_SOURCES
         ColaAlistados.h
         ColaFacturacion.h
         CargarClientesMemoria.h
-
+        HiloPedidos.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "CargarClientesMemoria.h"
 #include "SubirAMemoriaArticulos.h"
+#include "HiloPedidos.h"
 
 
 int main(int argc, char *argv[])
@@ -9,6 +10,10 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Proyecto_ED w;
     w.show();
+
+    //Iniciar el hilo de lectura de pedidos
+    FileRead hiloPedidos;
+    hiloPedidos.start();
 
     //Cargar CLientes Memoria.h
     list<Cliente> listaClientes;
