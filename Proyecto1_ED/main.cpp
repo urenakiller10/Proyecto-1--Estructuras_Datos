@@ -2,6 +2,7 @@
 #include "CargarClientesMemoria.h"
 #include "SubirAMemoriaArticulos.h"
 #include "HiloPedidos.h"
+#include "BalanceadorDecisiones.h"
 
 
 int main(int argc, char *argv[])
@@ -30,6 +31,10 @@ int main(int argc, char *argv[])
              << articulo.tiempo << '\t' << articulo.categoria << '\t'
              << articulo.ubicacion << endl;
     }
+
+    //Llamado del BalanceadorDecisiones
+
+    //BalanceadorDecisiones();
 
     return a.exec();
 
