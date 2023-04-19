@@ -18,20 +18,27 @@ class FileRead : public QThread
                 QThread::sleep(5); /*El numero se modifica por la cantidad de segundos que se quiera
                 esperar antes de leer de nuevo */
                 if (entry.is_regular_file()) {
+                    //Aqui pregunto si el archivo ya fue procesado (esto en basi a su nombre)
                     std::ifstream file(entry.path());
 
                     if (file.is_open()) {
-                        //std::cout << "Contenido de " << entry.path().filename() << ":" << std::endl;
+                        /*aqui lo tira a validar que este correcto
+                        Se espera un booleano, si da true, se agrega a la lista de procesados
+                        Si no, se tira el error y se maneja lo que se debe hacer */
 
-                        std::string line;
-                        while (std::getline(file, line)) {
-                            std::cout << line << std::endl;
+                        //bool archivoValido = procesarArchivo(file);
+                        /*if(archivoValido){
+                           //aqui se envia a procesar al balanceador
+                            //aqui se agrega el nombre del archivo a una lista de procesados
+                            //para que no se vuelva a leer luego
                         }
-
-                        std::cout << std::endl;
+                        else{
+                            //procesar el error, annadir su descripcion y pasarlo a la carpeta de fallidos
+                        }
+                        */
                     }
                 }
-        }
+            }
         }
     }
 };
