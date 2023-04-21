@@ -7,6 +7,11 @@
 #include "CargarClientesMemoria.h"
 #include "SubirAMemoriaArticulos.h"
 
+
+//***OJOOO****: Para aquí agregar a la cola de de alistados una vez que el balanceador toma decisión:
+// ColaAlisto cola;
+// cola.agregarElemento (aquí se pasa el pedido listo)
+
 void procesarPedidos(queue<string>& pedidos) {
     list<Cliente> listaClientes;
     LeerClientes(listaClientes);

@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         ColaFacturacion.h
         CargarClientesMemoria.h
         HiloPedidos.h
+        BodegaAlisto_Alistadores.h
+        FabricasProductos.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
