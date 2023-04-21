@@ -29,6 +29,8 @@ set(PROJECT_SOURCES
         HiloPedidos.h
         BodegaAlisto_Alistadores.h
         FabricasProductos.h
+        calcularTiempo.h
+        verificadorPedidos.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

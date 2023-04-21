@@ -13,9 +13,9 @@ struct Cliente {
 };
 
 void LeerClientes(list<Cliente>& listaClientes) {
-    ifstream archivo("C:/Users/Andrey/Desktop/Proyecto-1--Estructuras_Datos/Clientes.txt");
+    ifstream archivo("../Clientes.txt");
     if (!archivo) {
-        cout << "Error al abrir el archivo\n";
+        cout << "Error al abrir el archivo clientes\n";
         return;
     }
 
