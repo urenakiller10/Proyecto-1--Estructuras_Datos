@@ -22,6 +22,7 @@ class FileRead : public QThread
                 if (entry.is_regular_file()) {
                     //Aqui pregunto si el archivo ya fue procesado (esto en basi a su nombre)
                     std::ifstream file(entry.path());
+                    std::cout << entry.path() << std::endl;
 
                     if (file.is_open()) {
                         string line;
@@ -42,16 +43,37 @@ class FileRead : public QThread
                             if (lista.size() != 4){
                                 std::cout<<"ERROR EN CANTIDAD DE PARAMETROS" <<std::endl;
                                 ofstream archivoMalo(entry.path(),ofstream::app);
-                                string momento = getTimeDate();
-                                archivoMalo << "\n" << momento << " " <<"ERROR EN CANTIDAD DE PARAMETROS";
+                                archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR EN CANTIDAD DE PARAMETROS";
                                 archivoMalo.close();
                                 //Aqui se mueve el archivo
                             }
                             else {
                                 std::cout<< "Cantidad nice" <<std::endl;
                             }
+                            //cout << lista <<endl;
+                            list<string>::iterator it = lista.begin();
+                            cout << *it <<endl;
+
+                            //Tercera verificacion
+                            //Verificar que el codigo de cliente exista en memoria
+                            advance(it,1);
+                            cout << *it <<endl;
+                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CLIENTE NO EXISTENTE";
+
+
+                            //Cuarta verificacion
+                            //Verificar que el codigo de producto exista
+                            advance(it,1);
+                            cout << *it <<endl;
+                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, PRODUCTO NO EXISTENTE";
+
+                            //Quinta verificacion
+                            //Verificar que sea un entero y mayor a 0
+                            advance(it,1);
+                            cout << *it <<endl;
+                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CANTIDAD SOLICITADA INVALIDA";
                         }
-                        //Segunda verificacion
+
 
 
                     }
