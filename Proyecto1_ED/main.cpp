@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     //Cargar CLientes Memoria.h
     listaSimple clientes;
     clientes.LeerClientes();
-    //clientes.imprimir();
+    clientes.imprimir();
 
 
     //list<Cliente> listaClientes;

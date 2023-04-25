@@ -104,7 +104,17 @@ struct listaSimple{
 
         string linea;
         while (getline(archivo, linea)){
-            cout << linea <<endl;
+            size_t pos1 = 0;
+            size_t pos2 = linea.find('\t', pos1);
+            string codigo = linea.substr(pos1, pos2 - pos1);
+            pos1 = pos2 + 1;
+            pos2 = linea.find('\t', pos1);
+            string nombre = linea.substr(pos1, pos2 - pos1);
+            pos1 = pos2 + 1;
+            string prio = linea.substr(pos1);
+
+            Cliente* nuevo = new Cliente(stoi(codigo), nombre, stoi(prio));
+            insertar(nuevo);
         }
     }
 
