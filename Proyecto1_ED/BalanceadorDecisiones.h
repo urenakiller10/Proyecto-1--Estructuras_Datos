@@ -3,7 +3,7 @@
 #define BALANCEADORDECISIONES_H
 
 #include <queue>
-#include "HiloPedidos.h"
+//#include "HiloPedidos.h"
 #include "CargarClientesMemoria.h"
 #include "SubirAMemoriaArticulos.h"
 
@@ -12,9 +12,16 @@
 // ColaAlisto cola;
 // cola.agregarElemento (aquí se pasa el pedido listo)
 
+//Creo tambien le va a tener que pasar la lista suya
+void procesar(ifstream pedidoValidado){
+   //Aqui procesa lo que ocupes
+}
+
+
+
 void procesarPedidos(queue<string>& pedidos) {
     list<Cliente> listaClientes;
-    LeerClientes(listaClientes);
+    //LeerClientes(listaClientes);
 
     for (const auto& cliente : listaClientes) {
         string archivo = "../pedidos/" + to_string(cliente.codigo) + ".txt";

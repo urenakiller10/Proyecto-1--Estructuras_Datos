@@ -8,16 +8,78 @@
 
 using namespace std;
 
+struct Articulo;
+
 struct Articulo {
+    //Data section
     string codigo;
     int cantidad;
     int tiempo;
     char categoria;
     string ubicacion;
+
+    //Pointer section
+    Articulo* siguiente;
+
+    //Builder
+    Articulo(string _codigo, int _cantidad, int _tiempo, char _categoria, string _ubicacion){
+        codigo = _codigo;
+        cantidad = _cantidad;
+        tiempo = _tiempo;
+        categoria = _categoria;
+        ubicacion = _ubicacion;
+        siguiente = NULL;
+    }
+
+    void imprimir(){
+
+    }
+
 };
 
+/*
+struct listaSimple{
+    //Pointer section
+    Articulo* primerNodo;
+
+//Builders
+    listaSimple(){
+        primerNodo = NULL;
+    }
+
+    //Functions
+
+    void insertar(Articulo* nuevo){
+
+        if (primerNodo == NULL){
+            primerNodo = nuevo;
+        }
+        else{
+            Articulo* ultimo = primerNodo;
+            while(ultimo->siguiente != NULL){
+                ultimo = ultimo->siguiente;
+            }
+            ultimo->siguiente = nuevo;
+        }
+    }
+
+    void imprimir(){
+        Articulo* tmp = primerNodo;
+        while(tmp->siguiente != NULL){
+            tmp->imprimir();
+        }
+    }
+
+    bool esta(){
+        Articulo* tmp = primerNodo;
+        return false;
+    }
+
+};
+*/
+
 void subirArticulos(list<Articulo>& articulos) {
-    ifstream archivo("../Articulos.txt"); //Reemplazar esto con el hilo
+    ifstream archivo("../Articulos.txt");
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo Articulos.txt" << endl;
         return;
@@ -31,7 +93,7 @@ void subirArticulos(list<Articulo>& articulos) {
         string codigo = linea.substr(pos1, pos2 - pos1);
         pos1 = pos2 + 1;
         pos2 = linea.find('\t', pos1);
-        int cantidad = stoi(linea.substr(pos1, pos2 - pos1));
+        int cantidad = stoi(linea.substr(pos1, pos2 - pos1)); //Ojo con estas lineas, el stoi se puede caer
         pos1 = pos2 + 1;
         pos2 = linea.find('\t', pos1);
         int tiempo = stoi(linea.substr(pos1, pos2 - pos1));
@@ -64,7 +126,6 @@ void subirArticulos(list<Articulo>& articulos) {
         Articulo articulo = {codigo, cantidad, tiempo, categoria, ubicacion};
         articulos.push_back(articulo);
     }
-
     archivo.close();
 }
 #endif // SUBIRAMEMORIAARTICULOS_H

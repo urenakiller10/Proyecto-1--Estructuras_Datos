@@ -19,7 +19,7 @@ int tiempo(string ubicacion) {
     segundosMovimiento = segundosMovimiento - 1; //Se resta 1 porque ya se encuentra ubicado en A01
     segundosMovimiento = segundosMovimiento - 1; //Este porque para que no se cuente doble cuando llega al destino
     segundosMovimiento = segundosMovimiento - 1; //Se resta uno del eje Y ya que se encuentra inicialmente en Y=1
-    cout << "Tiempo total de movimiento " << segundosMovimiento;
+    //cout << "Tiempo total de movimiento " << segundosMovimiento;
 
     return segundosMovimiento;
 }
