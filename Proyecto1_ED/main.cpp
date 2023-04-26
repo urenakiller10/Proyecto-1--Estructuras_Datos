@@ -38,9 +38,9 @@ int main(int argc, char *argv[])
         cout << "------------------------------------";
     }
 //    //Se muestra la ventana con la interfaz gráfica
-//    QApplication a(argc, argv);
-//    Proyecto_ED w;
-//    w.show();
+    QApplication a(argc, argv);
+   Proyecto_ED w;
+    w.show();
 
 //    //Iniciar el hilo de lectura de pedidos
 //    FileRead hiloPedidos;
@@ -55,15 +55,15 @@ int main(int argc, char *argv[])
     // Se llama al encargado de facturar la cola de alistados
 
 
-    colaFacturacion cola;
-    cola.generarFacturas();
-    return 0;
+//    colaFacturacion cola;
+//    cola.generarFacturas();
+//    return 0;
 
 
     //Llamado del BalanceadorDecisiones
 
     //BalanceadorDecisiones();
 
-    //return a.exec();
+    return a.exec();
 
 }

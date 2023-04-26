@@ -22,9 +22,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>30</y>
+      <y>0</y>
       <width>791</width>
-      <height>591</height>
+      <height>621</height>
      </rect>
     </property>
     <property name="palette">
@@ -133,7 +133,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="B_FabricaA">
      <property name="geometry">
       <rect>
        <x>470</x>
@@ -355,7 +355,7 @@ color: rgb(0, 0, 0);</string>
       <string> Cola de Fábrica A</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="B_ColaAlisto">
      <property name="geometry">
       <rect>
        <x>640</x>
@@ -454,7 +454,7 @@ color: rgb(0, 0, 0);</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="B_FabricaB">
      <property name="geometry">
       <rect>
        <x>470</x>
@@ -676,7 +676,7 @@ color: rgb(0, 0, 0);</string>
       <string> Cola de Fábrica B</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="B_FabricaComodin">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -898,7 +898,7 @@ color: rgb(0, 0, 0);</string>
       <string> Cola de Fábrica Comodín</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QPushButton" name="B_FabricaC">
      <property name="geometry">
       <rect>
        <x>470</x>
@@ -1279,7 +1279,7 @@ color: rgb(0, 0, 0);</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="B_ColaFacturacion">
      <property name="geometry">
       <rect>
        <x>280</x>
@@ -1302,7 +1302,7 @@ color: rgb(0, 0, 0);</string>
       <string>Cola de facturación</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="B_ColaAlistados">
      <property name="geometry">
       <rect>
        <x>450</x>
@@ -1325,7 +1325,7 @@ color: rgb(0, 0, 0);</string>
       <string>Cola de alistados</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_8">
+    <widget class="QPushButton" name="B_ColaPedidos">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -1879,30 +1879,53 @@ color: rgb(0, 0, 0);</string>
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
+    <widget class="QPushButton" name="B_Balanceador">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>320</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 85, 0);</string>
+     </property>
+     <property name="text">
+      <string>Balanceador</string>
+     </property>
+    </widget>
     <zorder>line_33</zorder>
     <zorder>line_32</zorder>
     <zorder>line_31</zorder>
     <zorder>LabelImagen9</zorder>
     <zorder>line_28</zorder>
-    <zorder>pushButton_3</zorder>
+    <zorder>B_ColaAlisto</zorder>
     <zorder>LabelImagen12</zorder>
     <zorder>LabelImagen2</zorder>
     <zorder>LabelImagen4</zorder>
     <zorder>LabelImagen3</zorder>
-    <zorder>pushButton_4</zorder>
-    <zorder>pushButton_6</zorder>
+    <zorder>B_FabricaB</zorder>
+    <zorder>B_FabricaC</zorder>
     <zorder>LabelImagen6</zorder>
     <zorder>LabelImagen8</zorder>
     <zorder>LabelImagen7</zorder>
     <zorder>LabelImagen10</zorder>
-    <zorder>pushButton_5</zorder>
-    <zorder>pushButton_2</zorder>
+    <zorder>B_FabricaComodin</zorder>
+    <zorder>B_FabricaA</zorder>
     <zorder>LabelImagen5</zorder>
     <zorder>LabelImagen11</zorder>
     <zorder>LabelImagen13</zorder>
-    <zorder>pushButton</zorder>
-    <zorder>pushButton_7</zorder>
-    <zorder>pushButton_8</zorder>
+    <zorder>B_ColaFacturacion</zorder>
+    <zorder>B_ColaAlistados</zorder>
+    <zorder>B_ColaPedidos</zorder>
     <zorder>line</zorder>
     <zorder>line_2</zorder>
     <zorder>line_3</zorder>
@@ -1923,6 +1946,7 @@ color: rgb(0, 0, 0);</string>
     <zorder>line_27</zorder>
     <zorder>line_29</zorder>
     <zorder>line_30</zorder>
+    <zorder>B_Balanceador</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1938,8 +1962,8 @@ color: rgb(0, 0, 0);</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_3</tabstop>
+  <tabstop>B_FabricaA</tabstop>
+  <tabstop>B_ColaAlisto</tabstop>
  </tabstops>
  <resources/>
  <connections/>

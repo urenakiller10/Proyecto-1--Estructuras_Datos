@@ -16,6 +16,25 @@ public:
     Proyecto_ED(QWidget *parent = nullptr);
     ~Proyecto_ED();
 
+private slots:
+    void on_B_FabricaComodin_clicked();
+
+    void on_B_ColaPedidos_clicked();
+
+    void on_B_ColaFacturacion_clicked();
+
+    void on_B_ColaAlistados_clicked();
+
+    void on_B_ColaAlisto_clicked();
+
+    void on_B_FabricaC_clicked();
+
+    void on_B_FabricaB_clicked();
+
+    void on_B_FabricaA_clicked();
+
+    void on_B_Balanceador_clicked();
+
 private:
     Ui::Proyecto_ED *ui;
 };
