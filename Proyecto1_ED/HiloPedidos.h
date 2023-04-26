@@ -2,7 +2,6 @@
 #ifndef HILOPEDIDOS_H
 #define HILOPEDIDOS_H
 #include <QThread>
-#include "verificadorPedidos.h"
 #include "timeStamp.h"
 #include "BalanceadorDecisiones.h"
 

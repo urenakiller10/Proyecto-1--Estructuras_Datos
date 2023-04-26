@@ -27,6 +27,7 @@ set(PROJECT_SOURCES
         FabricasProductos.h
         calcularTiempo.h
         ColaFabricas.h
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

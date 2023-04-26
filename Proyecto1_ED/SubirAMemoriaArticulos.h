@@ -24,6 +24,9 @@ struct Articulo {
         codigo(codigo), cantidad(cantidad), tiempo(tiempo), categoria(categoria), ubicacion(ubicacion),
         siguiente(nullptr), anterior(nullptr) {}
 
+    void toString(){}
+    void imprimir(){}
+
 };
 
 void subirArticulos(list<Articulo*>& articulos) {

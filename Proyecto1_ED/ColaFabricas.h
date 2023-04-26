@@ -2,7 +2,7 @@
 #include <QDebug>
 #include<QObject>
 #include <iostream>
-#include "articulo.h"
+#include "SubirAMemoriaArticulos.h"
 
 #ifndef COLAFABRICAS_H
 #define COLAFABRICAS_H
@@ -64,3 +64,5 @@ private:
     QList<Articulo> cola;
 
 };
+
+#endif // COLAFABRICAS_H
