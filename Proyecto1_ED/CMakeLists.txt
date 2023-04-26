@@ -21,17 +21,12 @@ set(PROJECT_SOURCES
         timeStamp.h
         SubirAMemoriaArticulos.h
         BalanceadorDecisiones.h
-        ColaDeAlisto.h
-        ColaAlistados.h
         ColaFacturacion.h
         CargarClientesMemoria.h
         HiloPedidos.h
-        BodegaAlisto_Alistadores.h
         FabricasProductos.h
         calcularTiempo.h
-        verificadorPedidos.h
         ColaFabricas.h
-        Auxiliares.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
