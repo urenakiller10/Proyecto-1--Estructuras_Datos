@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-<<<<<<< HEAD
+
     //Iniciar el hilo de lectura de pedidos
     FileRead hiloPedidos;
     hiloPedidos.start(); //A este hilo tengo que pasarle ambas listas para luego poder verfiicar
@@ -24,16 +24,19 @@ int main(int argc, char *argv[])
     //LeerClientes(listaClientes);
 
     //Subir a Memoria Articulos.h
-    list<Articulo> articulos;
-    //subirArticulos(articulos);
+    list<Articulo*> articulos;
+    subirArticulos(articulos);
+    repetidos(articulos);
 
     // Imprimir la lista de artículos del txt
-    /*for (const auto& articulo : articulos) {
-        cout << articulo.codigo << '\t' << articulo.cantidad << '\t'
-             << articulo.tiempo << '\t' << articulo.categoria << '\t'
-             << articulo.ubicacion << endl;
-    }*/
-=======
+    for (Articulo* a : articulos) {
+        cout << "Codigo: " << a->codigo << endl;
+        cout << "Cantidad: " << a->cantidad << endl;
+        cout << "Tiempo: " << a->tiempo << endl;
+        cout << "Categoria: " << a->categoria << endl;
+        cout << "Ubicacion: " << a->ubicacion << endl;
+        cout << "------------------------------------";
+    }
 //    //Se muestra la ventana con la interfaz gráfica
 //    QApplication a(argc, argv);
 //    Proyecto_ED w;
@@ -48,16 +51,6 @@ int main(int argc, char *argv[])
 //    LeerClientes(listaClientes);
 //    cout<<"hola"<<endl;
 
-//    //Subir a Memoria Articulos.h
-//    list<Articulo> articulos;
-//    subirArticulos(articulos);
-
-//    // Imprimir la lista de artículos del txt
-//    for (const auto& articulo : articulos) {
-//        cout << articulo.codigo << '\t' << articulo.cantidad << '\t'
-//             << articulo.tiempo << '\t' << articulo.categoria << '\t'
-//             << articulo.ubicacion << endl;
-//    }
 
     // Se llama al encargado de facturar la cola de alistados
 
@@ -66,8 +59,6 @@ int main(int argc, char *argv[])
     cola.generarFacturas();
     return 0;
 
-
->>>>>>> main
 
     //Llamado del BalanceadorDecisiones
 

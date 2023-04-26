@@ -8,77 +8,25 @@
 
 using namespace std;
 
-struct Articulo;
-
 struct Articulo {
-    //Data section
+
     string codigo;
     int cantidad;
     int tiempo;
     char categoria;
     string ubicacion;
 
-    //Pointer section
+    //Punteros
     Articulo* siguiente;
+    Articulo* anterior;
 
-    //Builder
-    Articulo(string _codigo, int _cantidad, int _tiempo, char _categoria, string _ubicacion){
-        codigo = _codigo;
-        cantidad = _cantidad;
-        tiempo = _tiempo;
-        categoria = _categoria;
-        ubicacion = _ubicacion;
-        siguiente = NULL;
-    }
-
-    void imprimir(){
-
-    }
+    Articulo(string codigo, int cantidad, int tiempo, char categoria, string ubicacion) :
+        codigo(codigo), cantidad(cantidad), tiempo(tiempo), categoria(categoria), ubicacion(ubicacion),
+        siguiente(nullptr), anterior(nullptr) {}
 
 };
 
-/*
-struct listaSimple{
-    //Pointer section
-    Articulo* primerNodo;
-
-//Builders
-    listaSimple(){
-        primerNodo = NULL;
-    }
-
-    //Functions
-
-    void insertar(Articulo* nuevo){
-
-        if (primerNodo == NULL){
-            primerNodo = nuevo;
-        }
-        else{
-            Articulo* ultimo = primerNodo;
-            while(ultimo->siguiente != NULL){
-                ultimo = ultimo->siguiente;
-            }
-            ultimo->siguiente = nuevo;
-        }
-    }
-
-    void imprimir(){
-        Articulo* tmp = primerNodo;
-        while(tmp->siguiente != NULL){
-            tmp->imprimir();
-        }
-    }
-
-    bool esta(){
-        Articulo* tmp = primerNodo;
-        return false;
-    }
-
-};
-*/
-
-void subirArticulos(list<Articulo>& articulos) {
+void subirArticulos(list<Articulo*>& articulos) {
     ifstream archivo("../Articulos.txt");
     if (!archivo.is_open()) {
         cerr << "No se pudo abrir el archivo Articulos.txt" << endl;
@@ -109,23 +57,29 @@ void subirArticulos(list<Articulo>& articulos) {
                 continue;
         }
 
-        // Verificar que no haya artículos repetidos
-        bool encontrado = false;
-        for (const auto& articulo : articulos) {
-            if (articulo.codigo == codigo) {
-                cerr << "Error: artículo repetido: " << codigo << endl;
-                        encontrado = true;
-                break;
-            }
-        }
-        if (encontrado) {
-            continue;
-        }
-
         // Crear el artículo y agregarlo a la lista
-        Articulo articulo = {codigo, cantidad, tiempo, categoria, ubicacion};
+        Articulo* articulo = new Articulo(codigo, cantidad, tiempo, categoria, ubicacion);
+        if (!articulos.empty()) {
+            articulos.back()->siguiente = articulo;
+            articulo->anterior = articulos.back();
+        }
         articulos.push_back(articulo);
     }
     archivo.close();
 }
-#endif // SUBIRAMEMORIAARTICULOS_H
+
+void repetidos(list<Articulo*>& articulos) {
+    for (Articulo* a1 : articulos) {
+        for (Articulo* a2 : articulos) {
+            if (a1 == a2) {
+                continue;
+            }
+            if (a1->codigo == a2->codigo) {
+                cout << "Artículos repetidos: " << a1->codigo << endl;
+                    return;
+            }
+        }
+    }
+}
+
+#endif SUBIRAMEMORIAARTICULOS_H

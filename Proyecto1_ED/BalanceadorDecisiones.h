@@ -14,7 +14,7 @@
 
 //Creo tambien le va a tener que pasar la lista suya
 void procesar(ifstream pedidoValidado){
-   //Aqui procesa lo que ocupes
+    //Aqui procesa lo que ocupes
 }
 
 
@@ -36,7 +36,7 @@ void procesarPedidos(queue<string>& pedidos) {
     }
 }
 
-bool verificarExistencias(const string& pedido, list<Articulo>& articulos) {
+bool verificarExistencias(const string& pedido, list<Articulo*>& articulos) {
     // Extraer información del pedido
     istringstream iss(pedido);
     string codigo;
@@ -45,9 +45,9 @@ bool verificarExistencias(const string& pedido, list<Articulo>& articulos) {
 
     // Buscar el artículo en la lista de artículos
     for (auto& articulo : articulos) {
-        if (articulo.codigo == codigo) {
-            if (articulo.cantidad >= cantidad) {
-                articulo.cantidad -= cantidad;
+        if (articulo->codigo == codigo) {
+            if (articulo->cantidad >= cantidad) {
+                articulo->cantidad -= cantidad;
                 return true;
             }
             else {
@@ -60,7 +60,7 @@ bool verificarExistencias(const string& pedido, list<Articulo>& articulos) {
 }
 
 void BalanceadorDecisiones() {
-    list<Articulo> articulos;
+    list<Articulo*> articulos;
     subirArticulos(articulos);
 
     while (true) {
@@ -77,13 +77,39 @@ void BalanceadorDecisiones() {
             }
             else {
                 cout<<"Cantidad insuficiente, va a la cola de las fabricas "<<endl;
-                //Primero pregunte si es A o B, si es A y A tiene cola tiene mas pequeña (NO) va a la comodin B y viceversa.
-            }
-        }
 
-        // Esperar un tiempo antes de procesar nuevos pedidos
-        QThread::sleep(1);
+                //Primero pregunte si es A o B, si es A y A tiene cola tiene mas pequeña (NO) va a la comodin B y viceversa.
+
+//                switch (articulo->codigo) {
+//                case 'A':
+//                    if (colaFabricaA.size() <= colaFabricaComodin.size()) {
+//                        return " Va a la Fabrica A";
+//                    } else {
+//                        return "Va a la Fabrica Comodin";
+//                    }
+//                case 'B':
+//                    if (colaFabricaB.size() <= colaFabricaComodin.size()) {
+//                        return "Va a la Fabrica B";
+//                    } else {
+//                        return " Va a la Fabrica Comodin";
+//                    }
+
+//                case 'C':
+//                    return "Va a la Fabrica C";
+//                default:
+//                    return "La Categoría del producto es inválida";
+//                }
+//            }
+
+
+
+
+        }
     }
+
+    // Esperar un tiempo antes de procesar nuevos pedidos
+    QThread::sleep(1);
+}
 }
 
 #endif // BALANCEADORDECISIONES_H
