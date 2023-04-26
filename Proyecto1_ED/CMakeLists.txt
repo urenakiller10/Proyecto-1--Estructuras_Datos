@@ -20,7 +20,6 @@ set(PROJECT_SOURCES
         includes.h
         timeStamp.h
         SubirAMemoriaArticulos.h
-        LeerPedidosClientes.h
         BalanceadorDecisiones.h
         ColaDeAlisto.h
         ColaAlistados.h
