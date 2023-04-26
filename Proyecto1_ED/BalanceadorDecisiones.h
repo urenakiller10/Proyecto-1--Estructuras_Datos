@@ -83,19 +83,19 @@ void BalanceadorDecisiones() {
 //                switch (articulo->codigo) {
 //                case 'A':
 //                    if (colaFabricaA.size() <= colaFabricaComodin.size()) {
-//                        return " Va a la Fabrica A";
+//                        return " Va a la cola de la Fabrica A";
 //                    } else {
-//                        return "Va a la Fabrica Comodin";
+//                        return "Va a la cola de la Fabrica Comodin";
 //                    }
 //                case 'B':
 //                    if (colaFabricaB.size() <= colaFabricaComodin.size()) {
-//                        return "Va a la Fabrica B";
+//                        return "Va a la cola de la Fabrica B";
 //                    } else {
-//                        return " Va a la Fabrica Comodin";
+//                        return " Va a la cola Fabrica Comodin";
 //                    }
 
 //                case 'C':
-//                    return "Va a la Fabrica C";
+//                    return "Va a la cola de Fabrica C";
 //                default:
 //                    return "La Categoría del producto es inválida";
 //                }
