@@ -77,6 +77,7 @@ void BalanceadorDecisiones() {
             }
             else {
                 cout<<"Cantidad insuficiente, va a la cola de las fabricas "<<endl;
+                //Primero pregunte si es A o B, si es A y A tiene cola tiene mas pequeña (NO) va a la comodin B y viceversa.
             }
         }
 

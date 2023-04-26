@@ -13,6 +13,7 @@ using namespace std;
 string obtenerFabrica(const Articulo& articulo) {
     switch (articulo.categoria) {
     case 'A':
+
         return "Fabrica A";
     case 'B':
         return "Fabrica B";
