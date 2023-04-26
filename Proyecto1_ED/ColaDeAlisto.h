@@ -24,6 +24,7 @@ public:
         return cola.empty();
     }
 
+    //Cambiar tipo de cola a tipo articulo
 private:
     std::queue<int> cola;
 };
