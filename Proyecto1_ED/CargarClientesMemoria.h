@@ -113,6 +113,7 @@ struct listaSimple{
             pos1 = pos2 + 1;
             string prio = linea.substr(pos1);
 
+            //Hay que verificar las cosas del stoi antes, que si no croma esta mierda
             Cliente* nuevo = new Cliente(stoi(codigo), nombre, stoi(prio));
             insertar(nuevo);
         }

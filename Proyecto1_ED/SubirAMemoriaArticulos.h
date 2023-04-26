@@ -29,10 +29,14 @@ struct Articulo {
         categoria = _categoria;
         ubicacion = _ubicacion;
         siguiente = NULL;
+
+    }
+    void imprimir(){
+        cout << "Codigo: " << codigo << " Cantidad: " << cantidad << " Tiempo: " << tiempo << " Categoria: " << categoria << endl;
     }
 
-    void imprimir(){
-
+    string toString(){
+        return "Codigo: " + codigo + " Cantidad: " + to_string(cantidad) + " Tiempo: " + to_string(tiempo) + " Categoria" + categoria;
     }
 
 };
