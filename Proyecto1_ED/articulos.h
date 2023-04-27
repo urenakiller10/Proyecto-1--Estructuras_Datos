@@ -75,23 +75,7 @@ struct listaDoble{
 
     //Metodo para ver si ya el articulo existe en la lista doble
     /*Esto sirve para ver si esta repetido a la hora de cargar en memoria
-o para ver si existe cuando se procesa un pedido*/
-    /*bool exists(string _codigo){
-        if(primerNodo != NULL){
-            Articulo* actual = primerNodo;
-            while(actual->siguiente!=NULL){
-                cout << "SE IMPRIME LO QUE HAYA ";
-                actual->imprimir();
-                if(actual->codigo == _codigo){
-                    return true;
-                }
-                actual = actual->siguiente;
-                }
-            }
-        else{return true;}
-        return false;
-    }*/
-
+    o para ver si existe cuando se procesa un pedido*/
     bool exists(string _codigo){
         //Revise que el primer puto nodo no sea nulo, en caso de serlo devuelva true
         if(primerNodo != NULL){
@@ -168,9 +152,10 @@ o para ver si existe cuando se procesa un pedido*/
             pos1 = pos2 + 1;
             pos2 = linea.find('\t', pos1);
             string categoria = linea.substr(pos1, pos2-pos1);
+            categoria = categoria.substr(0,1);
             pos1 = pos2 + 1;
             string ubicacion = linea.substr(pos1);
-
+            cout << "Cat: " << categoria <<endl;
             //Tratar de convertir a enteros
             if(isInt(cantidad)){
                 cantidadAlm = stoi(cantidad);
@@ -182,30 +167,39 @@ o para ver si existe cuando se procesa un pedido*/
                 tiempoFab = stoi(tiempo);
             } else{
                 //Aqui tira error y croma
+                cout << "EL TIEMPO NO ES UN NUMERO" <<endl;
             }
 
             //cantidad menor que 0
             if(cantidadAlm < 0){
                 //Error de cantidad menor a 0
+                cout << "LA CANTIDAD ES MENOR A 0" <<endl;
             }
 
             //Tiempo de ejecucion menor a 0
             if(tiempoFab <= 0){
                 //Error de tiempo de fabricacion menor igual a 0
+                cout << "TIEMPO DE FABRICACION MENOR A 0" <<endl;
             }
 
             //Verificar que sea tipo A,B o C
-            if(categoria != "A" || categoria != "B" || categoria != "C"){
+            if(categoria == "A" && categoria == "B" && categoria == "C"){
                 //error de tipo
+                cout << "CATEGORIA NO VALIDA" <<endl;
             } //else no hace nada
 
-            if(exists(codigo)){
-               //error de ya existente
+            if (!(categoria == "A" || categoria == "B" || categoria == "C")) {
+                std::cout << "CAT NO VALIDA" << std::endl;
             }
 
-            //if(ubicacionOcupada(ubicacion)){
+            if(exists(codigo)){
+               cout << "YA HAY UN PRODUCTO CON ESTE CODIGO" <<endl;
+            }
+
+            if(ubicacionOcupada(ubicacion)){
                 //error de ubicacion ya ocupada
-            //}
+               cout << "YA HAY UN PRODUCTO EN ESTA ZONA DEL ALMACEN" <<endl;
+            }
 
             //Ya paso todo y esta bien, se supone
             Articulo* articulo = new Articulo(codigo, cantidadAlm, tiempoFab, categoria, ubicacion);

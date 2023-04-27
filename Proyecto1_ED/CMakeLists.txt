@@ -19,7 +19,6 @@ set(PROJECT_SOURCES
         proyecto_ed.ui
         includes.h
         timeStamp.h
-        SubirAMemoriaArticulos.h
         BalanceadorDecisiones.h
         ColaFacturacion.h
         CargarClientesMemoria.h

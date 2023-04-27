@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
 
     listaSimple clientes;
-    //clientes.LeerClientes();
+    clientes.LeerClientes();
 
     listaDoble articulos;
     articulos.cargar();
