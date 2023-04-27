@@ -4,6 +4,8 @@
 #include <QThread>
 #include "timeStamp.h"
 #include "BalanceadorDecisiones.h"
+#include "CargarClientesMemoria.h"
+#include "articulos.h"
 
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
@@ -11,8 +13,16 @@
 #include <fstream>
 
 class FileRead : public QThread
-
 {
+public:
+
+    //Builder
+    FileRead(listaSimple clientes, listaDoble articulos){
+        this->clientes = clientes;
+        this->articulos = articulos;
+    }
+
+
     void run() override{
         cout << "Cuantas veces voy a ver esta linea" << endl;
         //En este punto puedo tirar lo que sea una sola vez xd
@@ -98,6 +108,7 @@ class FileRead : public QThread
                             //Tercera verificacion
                             //Verificar que el codigo de cliente exista en memoria
                             advance(it,1);
+                            //if(clientes.existeCodigo(*it)){}
 
 
                             //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CLIENTE NO EXISTENTE";
@@ -106,6 +117,7 @@ class FileRead : public QThread
                             //Cuarta verificacion
                             //Verificar que el codigo de producto exista
                             advance(it,1);
+                            if(articulos.exists(*it)){}
                             //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, PRODUCTO NO EXISTENTE";
 
                             //Quinta verificacion
@@ -146,6 +158,10 @@ class FileRead : public QThread
             }
         }
     }
+
+private:
+    listaSimple clientes;
+    listaDoble articulos;
 };
 
 

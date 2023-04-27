@@ -10,9 +10,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 
-    //Iniciar el hilo de lectura de pedidos
-    FileRead hiloPedidos;
-    //hiloPedidos.start();
+
 
 
     listaSimple clientes;
@@ -21,6 +19,9 @@ int main(int argc, char *argv[])
     listaDoble articulos;
     articulos.cargar();
 
+    //Iniciar el hilo de lectura de pedidos
+    FileRead hiloPedidos(clientes, articulos);
+    //hiloPedidos.start();
 
     QApplication a(argc, argv);
    Proyecto_ED w;
