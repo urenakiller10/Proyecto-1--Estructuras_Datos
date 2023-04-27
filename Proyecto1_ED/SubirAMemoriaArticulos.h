@@ -7,7 +7,7 @@
 #include <list>
 
 using namespace std;
-
+/*
 struct Articulo {
 
     string codigo;
@@ -84,5 +84,5 @@ void repetidos(list<Articulo*>& articulos) {
         }
     }
 }
-
+*/
 #endif SUBIRAMEMORIAARTICULOS_H

@@ -23,20 +23,7 @@ int main(int argc, char *argv[])
     //list<Cliente> listaClientes;
     //LeerClientes(listaClientes);
 
-    //Subir a Memoria Articulos.h
-    list<Articulo*> articulos;
-    subirArticulos(articulos);
-    repetidos(articulos);
 
-    // Imprimir la lista de artículos del txt
-    for (Articulo* a : articulos) {
-        cout << "Codigo: " << a->codigo << endl;
-        cout << "Cantidad: " << a->cantidad << endl;
-        cout << "Tiempo: " << a->tiempo << endl;
-        cout << "Categoria: " << a->categoria << endl;
-        cout << "Ubicacion: " << a->ubicacion << endl;
-        cout << "------------------------------------";
-    }
 //    //Se muestra la ventana con la interfaz gráfica
     QApplication a(argc, argv);
    Proyecto_ED w;

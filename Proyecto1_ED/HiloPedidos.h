@@ -138,7 +138,7 @@ class FileRead : public QThread
                             cout << "LINEA PASO TODO " <<endl;
                         }
                     }
-                    procesar(std::ifstream(entry.path()));
+                    //procesar(std::ifstream(entry.path()));
                     cout << "ARCHIVO PASO TODO -> PROCEDE A ENVIAR AL BALANCEADOR"<<endl;
 
 

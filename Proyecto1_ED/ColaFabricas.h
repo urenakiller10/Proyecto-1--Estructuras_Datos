@@ -53,7 +53,7 @@ public:
                 result.append('-');
             }
             Articulo actual = cola.at(i);
-            result.append(actual.toString());
+            //result.append(actual.toString());
 
         }
         return result;
@@ -62,7 +62,6 @@ public:
 
 private:
     QList<Articulo> cola;
-
 };
 
 #endif // COLAFABRICAS_H
