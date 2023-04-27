@@ -14,8 +14,10 @@ struct Articulo{
     string ubicacion;
 
     //Pointer section
-    Articulo* anterior;
-    Articulo* siguiente;
+    Articulo* anterior = NULL;
+    Articulo* siguiente = NULL;
+    //Nota para Charlie del futuro:
+    //SIEMPRE INICIALICE LOS PUTOS PUNTEROS EN NULL
 
     //Builder
     Articulo(string _codigo, int _cantidadAlmacen, int _segundosFabricacion, string _categoria, string _ubicacion){
@@ -61,12 +63,13 @@ struct listaDoble{
             primerNodo = ultimoNodo = nuevo;
         }
         else{
-            Articulo* actual = primerNodo;
-            while(actual->siguiente!=NULL){
-                actual = actual->siguiente;
+            Articulo* tmp = primerNodo;
+            while(tmp->siguiente!=NULL){
+                tmp = tmp->siguiente;
             }
-            actual->siguiente = nuevo;
-            nuevo->anterior = actual;
+            tmp->siguiente = nuevo;
+            nuevo->anterior = tmp;
+            ultimoNodo = tmp;
         }
     }
 
@@ -90,9 +93,24 @@ o para ver si existe cuando se procesa un pedido*/
     }*/
 
     bool exists(string _codigo){
+        //Revise que el primer puto nodo no sea nulo, en caso de serlo devuelva true
         if(primerNodo != NULL){
+            Articulo* tmp = primerNodo; //Si existe un primer nodo no nulo
+            while(tmp->siguiente != NULL){ //Que a lo siguiente que apunte no sea una mierda nula
+                //Aqui se hara la mierda que se tenga que hacer
 
+                if(tmp->codigo == _codigo){
+                    return true; //Ya existe
+                }
+
+               //Apunto al siguiente
+                tmp = tmp->siguiente;
+            }
         }
+        else{
+            return false;
+        }
+        return false;
     }
 
 
