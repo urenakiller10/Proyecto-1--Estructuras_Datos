@@ -155,7 +155,6 @@ struct listaDoble{
             categoria = categoria.substr(0,1);
             pos1 = pos2 + 1;
             string ubicacion = linea.substr(pos1);
-            cout << "Cat: " << categoria <<endl;
             //Tratar de convertir a enteros
             if(isInt(cantidad)){
                 cantidadAlm = stoi(cantidad);
