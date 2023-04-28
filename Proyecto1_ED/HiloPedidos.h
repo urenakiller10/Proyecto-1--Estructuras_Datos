@@ -139,7 +139,7 @@ class FileRead : public QThread
                         }
                     }
                     procesar(std::ifstream(entry.path()));
-                    cout << "ARCHIVO PASO TODO -> PROCEDE A ENVIAR AL BALANCEADOR"<<endl;
+                    cout << "ARCHIVO PASAQ TODO -> PROCEDE A ENVIAR AL BALANCEADOR"<<endl;
 
 
                 }

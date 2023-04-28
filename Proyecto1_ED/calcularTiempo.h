@@ -11,9 +11,9 @@ int tiempo(string ubicacion) {
     string cNum = ubicacion.substr(1, 2); //Captura los dos numeros
 
     int cantidadX = int(ubicacion[0]) - 64; //Diferencia entre el caracter leido y el del "A" en la tabla ascii
-    cout << cantidadX <<endl; //Impresion de prueba
+    //cout << cantidadX <<endl; //Impresion de prueba
     int cantidadY = stoi(cNum); //Convierte los dos string numericos a int
-    cout << cantidadY <<endl; //Impresion de prueba
+    //cout << cantidadY <<endl; //Impresion de prueba
 
     int segundosMovimiento = ((cantidadX + cantidadY)  * 2);
     segundosMovimiento = segundosMovimiento - 1; //Se resta 1 porque ya se encuentra ubicado en A01

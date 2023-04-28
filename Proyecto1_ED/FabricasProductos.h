@@ -20,7 +20,6 @@ public:
         running = true;
     }
 
-
     void run(){
 
         while(running){

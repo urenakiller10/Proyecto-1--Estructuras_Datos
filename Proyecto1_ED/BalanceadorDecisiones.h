@@ -13,11 +13,10 @@
 // cola.agregarElemento (aquí se pasa el pedido listo)
 
 //Creo tambien le va a tener que pasar la lista suya
+
 void procesar(ifstream pedidoValidado){
-    //Aqui procesa lo que ocupes
+
 }
-
-
 
 void procesarPedidos(queue<string>& pedidos) {
     list<Cliente> listaClientes;
@@ -37,6 +36,7 @@ void procesarPedidos(queue<string>& pedidos) {
 }
 
 bool verificarExistencias(const string& pedido, list<Articulo*>& articulos) {
+
     // Extraer información del pedido
     istringstream iss(pedido);
     string codigo;
@@ -99,7 +99,7 @@ void BalanceadorDecisiones() {
 //                default:
 //                    return "La Categoría del producto es inválida";
 //                }
-//            }
+            }
 
 
 
@@ -110,7 +110,7 @@ void BalanceadorDecisiones() {
     // Esperar un tiempo antes de procesar nuevos pedidos
     QThread::sleep(1);
 }
-}
+
 
 #endif // BALANCEADORDECISIONES_H
 

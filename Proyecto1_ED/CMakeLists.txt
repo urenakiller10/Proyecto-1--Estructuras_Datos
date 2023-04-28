@@ -27,6 +27,7 @@ set(PROJECT_SOURCES
         FabricasProductos.h
         calcularTiempo.h
         ColaFabricas.h
+        Alistadores.h
 
 )
 

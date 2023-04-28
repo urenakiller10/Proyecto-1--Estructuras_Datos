@@ -35,6 +35,8 @@ private slots:
 
     void on_B_Balanceador_clicked();
 
+    void on_B_Alistadores_clicked();
+
 private:
     Ui::Proyecto_ED *ui;
 };
