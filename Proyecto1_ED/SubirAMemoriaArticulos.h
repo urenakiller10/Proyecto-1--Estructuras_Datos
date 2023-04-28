@@ -24,7 +24,19 @@ struct Articulo {
         codigo(codigo), cantidad(cantidad), tiempo(tiempo), categoria(categoria), ubicacion(ubicacion),
         siguiente(nullptr), anterior(nullptr) {}
 
-    void toString(){}
+    string toString(){}
+
+    std::string to_String() const {
+        std::ostringstream oss;
+        oss << "Código: " << codigo << " ";
+        oss << "Cantidad: " << cantidad << " ";
+        oss << "Tiempo: " << tiempo << " ";
+        oss << "Categoría: " << categoria << " ";
+        oss << "Ubicación: " << ubicacion << " ";
+        return oss.str();
+
+    }
+
     void imprimir(){}
 
 };
@@ -84,5 +96,7 @@ void repetidos(list<Articulo*>& articulos) {
         }
     }
 }
+
+
 
 #endif SUBIRAMEMORIAARTICULOS_H

@@ -53,7 +53,7 @@ public:
                 result.append('-');
             }
             Articulo actual = cola.at(i);
-            result.append(actual._toString());
+            result.append(actual.to_String().c_str());
 
         }
         return result;
