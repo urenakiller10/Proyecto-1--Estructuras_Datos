@@ -28,7 +28,7 @@ set(PROJECT_SOURCES
         ColaFabricas.h
         articulos.h
         auxiliaries.h
-
+pedidos.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

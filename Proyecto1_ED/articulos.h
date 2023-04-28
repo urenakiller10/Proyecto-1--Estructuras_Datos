@@ -43,6 +43,12 @@ struct Articulo{
     string getUbicacion(){
         return ubicacion;
     }
+    string toString(){
+        string result = "";
+        result = "Code:" + codigo +" Cant:" + to_string(existencias) + " Seg:" + to_string(segundosFabricacion) + " Ubi:" + ubicacion;
+
+        return result;
+    }
 };
 
 struct listaDoble{
