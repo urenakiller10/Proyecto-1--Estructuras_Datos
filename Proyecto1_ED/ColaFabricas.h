@@ -7,9 +7,6 @@
 #ifndef COLAFABRICAS_H
 #define COLAFABRICAS_H
 
-
-template <typename T>
-
 struct colaFabricas{
 
 public:

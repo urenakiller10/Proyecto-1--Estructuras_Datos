@@ -32,6 +32,9 @@ struct parOrdenado{
     }
 };
 
+//parOrdenado->codigo
+//parOrdenado->cantidad
+
 struct listaPares{
     parOrdenado* primero;
 

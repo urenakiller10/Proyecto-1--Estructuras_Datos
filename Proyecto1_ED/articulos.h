@@ -136,6 +136,19 @@ struct listaDoble{
         return false;
     }
 
+    string getCategoria(string _codigo){
+        if(primerNodo!=NULL){
+            Articulo* actual = primerNodo;
+            while(actual->siguiente!=NULL){
+                if(actual->codigo == _codigo){
+                    return actual->categoria;
+                }
+                actual = actual->siguiente;
+            }
+        }
+        return "";
+    }
+
     void cargar(){
         ifstream archivo("../Articulos.txt");
         if (!archivo.is_open()) {
