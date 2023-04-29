@@ -36,7 +36,7 @@ struct parOrdenado{
 //parOrdenado->cantidad
 
 struct listaPares{
-    parOrdenado* primero;
+    parOrdenado* primero = NULL;
 
     listaPares(){
         primero = NULL;

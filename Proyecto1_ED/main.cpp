@@ -10,9 +10,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 
-
-
-
     listaSimple clientes;
     clientes.LeerClientes();
 
@@ -21,7 +18,7 @@ int main(int argc, char *argv[])
 
     //Iniciar el hilo de lectura de pedidos
     FileRead hiloPedidos(clientes, articulos);
-    //hiloPedidos.start();
+    hiloPedidos.start();
 
     QApplication a(argc, argv);
    Proyecto_ED w;

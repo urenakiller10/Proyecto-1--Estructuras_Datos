@@ -43,6 +43,7 @@ struct Articulo{
     string getUbicacion(){
         return ubicacion;
     }
+
     string toString(){
         string result = "";
         result = "Code:" + codigo +" Cant:" + to_string(existencias) + " Seg:" + to_string(segundosFabricacion) + " Ubi:" + ubicacion;
@@ -147,6 +148,19 @@ struct listaDoble{
             }
         }
         return "";
+    }
+
+    int getTime(string _codigo){
+        if(primerNodo!=NULL){
+            Articulo* actual = primerNodo;
+            while(actual->siguiente!=NULL){
+                if(actual->codigo == _codigo){
+                    return actual->segundosFabricacion;
+                }
+                actual = actual->siguiente;
+            }
+        }
+        return 0;
     }
 
     void cargar(){

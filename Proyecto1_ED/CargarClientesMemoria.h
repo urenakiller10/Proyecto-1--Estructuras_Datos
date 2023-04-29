@@ -26,10 +26,10 @@ struct Cliente {
         siguiente = NULL;
     }
 
-    Cliente(){}
+    Cliente(){} //Ni idea de porque hay un constructor por defecto, pero piola
 
     void imprimir(){
-        cout << "Codigo: " << codigo << " .Nombre: " << nombre << " .Prioridad: " << prioridad <<endl;
+        cout << "Codigo: " << codigo << " Nombre: " << nombre << " Prioridad: " << prioridad <<endl;
     }
 
 };
