@@ -31,26 +31,39 @@ public:
     void run() override{
         //En este punto puedo tirar lo que sea una sola vez xd
         filesystem::path directoryPath("../pedidos");
-        listaProcesados* listaProc;
+
+        listaProcesados* listaProc = new listaProcesados;
         int contadorLineas = 0; //Declaracion y un valor para evitar faults
         int numPedido = 0;
         int numCliente;
         while (true){
             for(const auto& entry : std::filesystem::directory_iterator(directoryPath)) {
                 if(entry.is_regular_file()){
+
                     ifstream file = (entry.path());
                     string rutaActual = entry.path().string();
+                    string r = rutaActual;
+
                     contadorLineas = 0; //Se reinicia el counter por cada archivo
                     if(!listaProc->procesado(rutaActual)){ //Si el archivo no se ha procesado, haga
-                        cout << "Leyendo: " << rutaActual << endl;
+                        //cout << "Leyendo: " << rutaActual << endl;
+                        //cout << "Nombre archivo: " << getFileName(rutaActual) <<endl;
+
                         if(file.is_open()){
                             string line;
+                            listaPares* lista = new listaPares();
                             while(getline(file, line)){
 
                                 //Primer linea, numero de pedido
                                 if(contadorLineas == 0){
                                     if(!isInt(line)){
-                                        continue;
+                                        //Meta lo que ocupa al archivo
+
+                                        //Cierre el archivo
+
+                                        //Invoque a mover
+                                        //moverArchivos(getFileName(r));
+                                        break;
                                         //Error de que el num de pedido no es int
                                     }
                                     else{
@@ -105,7 +118,7 @@ public:
                                     }
 
                                     //cuando ya pasa toda verificacion
-                                    listaPares* lista = new listaPares();
+
                                     parOrdenado* par = new parOrdenado(codigoP, stoi(cantidad));
                                     lista->insertar(par);
 
@@ -113,7 +126,7 @@ public:
                                 contadorLineas +=1;
                             }
 
-                            nodoArc* nodoProc = new nodoArc(rutaActual); //La ruta del archivo
+                            nodoArc* nodoProc = new nodoArc(r); //La ruta del archivo
                             listaProc->insertar(nodoProc);
                             //Aqui armar el pedido con toda la data
                         }
@@ -126,8 +139,8 @@ public:
 
     //struct nodo para la lista de archivos procesados
     struct nodoArc{
-        string nombre;
-        nodoArc* sig;
+        string nombre = "";
+        nodoArc* sig = NULL;
         nodoArc(string _nombre){
             nombre = _nombre;
             sig = NULL;
@@ -167,6 +180,27 @@ public:
         }
 
     };
+
+    //Esto es la mamadelamamadelamamademama, pero se ocupa
+    string getFileName(string ruta){
+        const char* rutaC = ruta.c_str();
+        const char* nombreArchivo = strrchr(rutaC, '\\');
+        string nombre = string(nombreArchivo).erase(0,1);
+        cout << "ARCHIVO ACTUAL: " <<nombre <<endl;
+        return nombre;
+    }
+
+    void moverArchivos(string nombreArchivo){
+        string fuente = "../Pedidos/" + nombreArchivo;
+        string destino = "../malos/" + nombreArchivo;
+        cout << "Fuente: " << fuente << " Destino: " << destino << endl;
+        try {
+            filesystem::rename(fuente, destino);
+            cout << "Archivo movido exitosamente" << endl;
+        } catch (...) {
+            cout << "Error al mover el archivo: " << endl;
+        }
+    }
 
 private:
     listaSimple clientes;
