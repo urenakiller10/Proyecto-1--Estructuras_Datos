@@ -221,7 +221,7 @@ struct listaDoble{
 
             //Ya paso todo y esta bien, se supone
             Articulo* articulo = new Articulo(codigo, cantidadAlm, tiempoFab, categoria, ubicacion);
-            insertar(articulo);
+            insertar(articulo); //inserta en la lista doble
         }
     }
 };
