@@ -107,6 +107,7 @@ struct listaSimple{
     }
 
     void LeerClientes(){
+        cout << "Se intenta leer clientes" <<endl;
         ifstream archivo("../Clientes.txt");
         if(!archivo){
             cout << "No se pudo abrir clientes";

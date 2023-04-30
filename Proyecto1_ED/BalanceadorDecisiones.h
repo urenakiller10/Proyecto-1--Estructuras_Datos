@@ -11,6 +11,7 @@
 #include "articulos.h"
 #include "auxiliaries.h"
 #include "pedidos.h"
+#include "QMutex"
 
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
@@ -31,16 +32,41 @@ class Balanceador : public QThread
 public:
 
     Balanceador(){}
-    Balanceador(colaFabricas colaA, colaFabricas colaB, colaFabricas colaC, colaFabricas colaX, listaDoble _productos){
+    Balanceador(colaFabricas colaA, colaFabricas colaB, colaFabricas colaC, colaFabricas colaX, listaDoble _productos, colaPedidos* _colaPed, QMutex* mutex){
         this->colaFabricaA = colaA;
         this->colaFabricaB = colaB;
         this->colaFabricaC = colaC;
         this->colaFabricaComodin = colaX;
         this->productos = _productos;
+        this->colaPed = _colaPed;
+        this->mutex = mutex;
+        cout << "Se crea instancia de balanceador" << endl;
     }
 
-    void procesar(pedido nuevoPed){
-        listaPares* listaActual = nuevoPed.lista;
+    void run() override{
+        //cout << "Llego al hilo del balanceador de alguna forma";
+        while(true){
+
+            mutex->lock();
+            if(!colaPed->isEmpty()){
+                cout << "Hay un pedido por atender"<<endl;
+                pedido nuevoPedido = colaPed->dequeue();
+                cout << nuevoPedido.toString() <<endl;
+                mutex->unlock();
+                listaPares* listaActual =nuevoPedido.lista;
+                QThread::sleep(1); //Que dure un segundo en procesar el nuevo pedido
+
+                parOrdenado* par = listaActual->primero;
+                while(par->sig != NULL){
+                    string codProd = par->codigoProducto;
+                }
+
+            }
+            else{
+                mutex->unlock();
+            }
+            QThread::sleep(1);
+        }
     }
 
 private:
@@ -49,6 +75,8 @@ private:
     colaFabricas colaFabricaC;
     colaFabricas colaFabricaComodin;
     listaDoble productos;
+    colaPedidos* colaPed;
+    QMutex* mutex;
 };
 
 
@@ -56,46 +84,9 @@ private:
 
 
 /*
-void procesarPedidos(queue<string>& pedidos) {
-    list<Cliente> listaClientes;
-    //LeerClientes(listaClientes);
 
-    for (const auto& cliente : listaClientes) {
-        string archivo = "../pedidos/" + to_string(cliente.codigo) + ".txt";
-        ifstream file(archivo);
 
-        if (file.is_open()) {
-            string line;
-            while (getline(file, line)) {
-                pedidos.push(line + " " + to_string(cliente.prioridad));
-            }
-        }
-    }
-}
 
-bool verificarExistencias(const string& pedido, list<Articulo*>& articulos) {
-
-    // Extraer información del pedido
-    istringstream iss(pedido);
-    string codigo;
-    int existencias;
-    iss >> codigo >> existencias;
-
-    // Buscar el artículo en la lista de artículos
-    for (auto& articulo : articulos) {
-        if (articulo->codigo == codigo) {
-            if (articulo->existencias >= existencias) {
-                articulo->existencias-= existencias;
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    }
-
-    return false;
-}
 
 void BalanceadorDecisiones() {
     //list<Articulo*> listarticulos = new listarticulos(listarticulos);

@@ -6,11 +6,14 @@
 #include "ColaFacturacion.h"
 #include "colaPedidos.h"
 #include "ColaFabricas.h"
+#include "QMutex"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+//mutex como parametro
+    QMutex mutexPedidos;
 
 
     //Se leen los clientes
@@ -23,11 +26,20 @@ int main(int argc, char *argv[])
     listaDoble articulos;
     articulos.cargar();
 
-    colaPedidos colaPed(clientes);
+    colaPedidos* colaPed = new colaPedidos(clientes);
 
     //Se leen los pedidos
-    FileRead hiloPedidos(clientes, articulos, colaPed);
-    hiloPedidos.start();
+    FileRead* hiloPedidos = new FileRead(clientes, articulos, colaPed, &mutexPedidos);
+    hiloPedidos->start();
+
+    //Las colas de las fabricas
+    colaFabricas colaA;
+    colaFabricas colaB;
+    colaFabricas colaC;
+    colaFabricas colaCom;
+
+    Balanceador* hiloBalanceador = new Balanceador(colaA, colaB, colaC, colaCom, articulos, colaPed, &mutexPedidos);
+    hiloBalanceador->start();
 
     QApplication a(argc, argv);
    Proyecto_ED w;

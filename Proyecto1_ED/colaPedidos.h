@@ -15,12 +15,15 @@ public:
     colaPedidos(){}
 
     colaPedidos(listaSimple clientes){
+        cout << "Se crea la cola de pedidos " <<endl;
         this->clientes = clientes;
     }
 
     void enqueue(pedido value)
     {
+        cola.append(value);
         //Obtener las prios
+        /*
         if(!isEmpty()){ //Si existe algo para poder tomarlo
             pedido primero = cola.constFirst();
             int primerPrio = clientes.prioridadCliente(primero.codCliente);
@@ -35,12 +38,9 @@ public:
         }
         else{
             cola.append(value); //Si no hay nada en la lista, se va de primero
-        }
+        }*/
     }
 
-    void enqueueFirst(pedido value){
-
-    }
 
     pedido dequeue()
     {

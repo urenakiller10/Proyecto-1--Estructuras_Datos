@@ -16,6 +16,12 @@ struct pedido{
         codCliente = _codCliente;
         lista = _lista;
     }
+
+    string toString(){
+        string r = "Id: " + to_string(id) + " cod cliente " + to_string(codCliente);
+        return r;
+    }
+
 };
 
 
