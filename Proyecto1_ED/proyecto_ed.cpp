@@ -74,6 +74,6 @@ void Proyecto_ED::on_B_ColaFacturacion_clicked()
 
 void Proyecto_ED::on_B_Alistadores_clicked()
 {
-    qDebug() << "Muestra la cola de los alistadores;
+    qDebug() << "Muestra la cola de los alistadores";
 }
 

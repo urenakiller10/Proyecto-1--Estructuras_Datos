@@ -44,7 +44,7 @@ struct Articulo{
         return ubicacion;
     }
 
-    string toString(){
+    string to_String(){
         string result = "";
         result = "Code:" + codigo +" Cant:" + to_string(existencias) + " Seg:" + to_string(segundosFabricacion) + " Ubi:" + ubicacion;
 
