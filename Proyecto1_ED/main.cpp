@@ -4,10 +4,12 @@
 #include "articulos.h"
 #include "BalanceadorDecisiones.h"
 #include "ColaFacturacion.h"
+#include "colaPedidos.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
 
 
     listaSimple clientes;
@@ -16,8 +18,10 @@ int main(int argc, char *argv[])
     listaDoble articulos;
     articulos.cargar();
 
+    colaPedidos colaPed(clientes);
+
     //Iniciar el hilo de lectura de pedidos
-    FileRead hiloPedidos(clientes, articulos);
+    FileRead hiloPedidos(clientes, articulos, colaPed);
     hiloPedidos.start();
 
     QApplication a(argc, argv);

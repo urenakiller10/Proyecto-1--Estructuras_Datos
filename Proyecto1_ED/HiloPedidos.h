@@ -4,6 +4,7 @@
 #include <QThread>
 #include "timeStamp.h"
 #include "BalanceadorDecisiones.h"
+#include "colaPedidos.h"
 #include "CargarClientesMemoria.h"
 #include "articulos.h"
 #include "auxiliaries.h"
@@ -17,14 +18,16 @@
 struct nodoArc;
 struct listaProcesados;
 
+
 class FileRead : public QThread
 {
 public:
 
     //Builder
-    FileRead(listaSimple clientes, listaDoble articulos){
+    FileRead(listaSimple clientes, listaDoble articulos, colaPedidos _colaPed){
         this->clientes = clientes;
         this->articulos = articulos;
+        this->colaPed = _colaPed;
     }
 
 
@@ -47,7 +50,7 @@ public:
                     contadorLineas = 0; //Se reinicia el counter por cada archivo
                     if(!listaProc->procesado(rutaActual)){ //Si el archivo no se ha procesado, haga
                         //cout << "Leyendo: " << rutaActual << endl;
-                        cout << "Nombre archivo: " << getFileName(rutaActual) <<endl;
+                        //cout << "Nombre archivo: " << getFileName(rutaActual) <<endl;
 
                         if(file.is_open()){
                             string line;
@@ -120,7 +123,7 @@ public:
                                         cout << "Mae la vara no existe" <<endl;
                                         file.close();
                                         ofstream archivoMalo(entry.path(),ofstream::app);
-                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El codigo de producto no existe";
+                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El codigo de producto "<< codigoP << " no existe";
                                         //Cierre el archivo
                                         archivoMalo.close();
                                         //Invoque a mover
@@ -168,7 +171,7 @@ public:
                             //Aqui armar el pedido con toda la data
 
                             pedido* nuevo = new pedido(numPedido, numCliente, lista);
-
+                            colaPed.enqueue(*(nuevo));
                         }
                     }
                 }
@@ -246,6 +249,7 @@ public:
 private:
     listaSimple clientes;
     listaDoble articulos;
+    colaPedidos colaPed;
 };
 
 

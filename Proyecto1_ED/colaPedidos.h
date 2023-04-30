@@ -12,8 +12,10 @@ struct colaPedidos{
 
 public:
 
-    colaPedidos(listaSimple clientes){
+    colaPedidos(){}
 
+    colaPedidos(listaSimple clientes){
+        this->clientes = clientes;
     }
 
     void enqueue(pedido value)
@@ -26,7 +28,6 @@ public:
 
             if(prioActual > primerPrio){
                 cola.insert(0, value);
-
             }
             else{
                 cola.append(value); //Si el primero de la cola es el de mayor prioridad, se va al final
