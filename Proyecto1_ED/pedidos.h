@@ -30,6 +30,12 @@ struct parOrdenado{
         codigoProducto = _codProd;
         cantidad = _cantidad;
     }
+
+    string toString(){
+        string result = "Articulo: " + codigoProducto + " Cantidad: " + to_string(cantidad);
+        return result;
+    }
+
 };
 
 //parOrdenado->codigo

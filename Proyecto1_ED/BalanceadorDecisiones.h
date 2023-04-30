@@ -1,11 +1,21 @@
 #ifndef BALANCEADORDECISIONES_H
 #define BALANCEADORDECISIONES_H
 
-#include <queue>
-//#include "HiloPedidos.h"
+#include <QThread>
+#include "ColaFabricas.h"
+
+#include <QThread>
+#include "timeStamp.h"
+#include "colaPedidos.h"
 #include "CargarClientesMemoria.h"
 #include "articulos.h"
-#include "ColaFabricas.h"
+#include "auxiliaries.h"
+#include "pedidos.h"
+
+#include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
+#include <iostream>
+#include <string>
+#include <fstream>
 
 //***OJOOO****: Para aquí agregar a la cola de de alistados una vez que el balanceador toma decisión:
 // ColaAlisto cola;
@@ -16,17 +26,36 @@
 
 //Se crean las colas de tipo Artículo de cada tipo fabrica
 
-colaFabricas<Articulo> colaFabricaA;
-colaFabricas<Articulo> colaFabricaB;
-colaFabricas<Articulo> colaFabricaC;
-colaFabricas<Articulo> colaFabricaComodin;
+class Balanceador : public QThread
+{
+public:
+
+    Balanceador(){}
+    Balanceador(colaFabricas colaA, colaFabricas colaB, colaFabricas colaC, colaFabricas colaX, listaDoble _productos){
+        this->colaFabricaA = colaA;
+        this->colaFabricaB = colaB;
+        this->colaFabricaC = colaC;
+        this->colaFabricaComodin = colaX;
+        this->productos = _productos;
+    }
+
+    void procesar(pedido nuevoPed){
+        listaPares* listaActual = nuevoPed.lista;
+    }
+
+private:
+    colaFabricas colaFabricaA;
+    colaFabricas colaFabricaB;
+    colaFabricas colaFabricaC;
+    colaFabricas colaFabricaComodin;
+    listaDoble productos;
+};
 
 
 
-void procesar(ifstream pedidoValidado){
 
-}
 
+/*
 void procesarPedidos(queue<string>& pedidos) {
     list<Cliente> listaClientes;
     //LeerClientes(listaClientes);
@@ -69,8 +98,13 @@ bool verificarExistencias(const string& pedido, list<Articulo*>& articulos) {
 }
 
 void BalanceadorDecisiones() {
-    list<Articulo*> listarticulos;
-    Articulo(listarticulos);
+    //list<Articulo*> listarticulos = new listarticulos(listarticulos);
+
+
+    colaFabricas colaFabricaA;
+    colaFabricas colaFabricaB;
+    colaFabricas colaFabricaC;
+    colaFabricas colaFabricaComodin;
 
     while (true) {
         queue<string> pedidos;
@@ -173,6 +207,6 @@ void BalanceadorDecisiones() {
         QThread::sleep(1);
     }
 }
-
+*/
 #endif // BALANCEADORDECISIONES_H
 

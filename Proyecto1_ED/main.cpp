@@ -5,10 +5,13 @@
 #include "BalanceadorDecisiones.h"
 #include "ColaFacturacion.h"
 #include "colaPedidos.h"
+#include "ColaFabricas.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+
 
     //Se leen los clientes
 

@@ -104,8 +104,6 @@ struct listaDoble{
         return false;
     }
 
-
-
     //Metodo para ver si hay suficientes existencias de un producto en bodega
     bool suficiente(string _codigo, int cantidad){
         if(primerNodo != NULL){
@@ -161,6 +159,16 @@ struct listaDoble{
             }
         }
         return 0;
+    }
+
+    void actualizarStock(int n, string _codigo){
+        Articulo* actual = primerNodo;
+        while(actual->siguiente!=NULL){
+            if(actual->codigo == _codigo){
+                actual->existencias += n;
+            }
+            actual = actual->siguiente;
+        }
     }
 
     void cargar(){
