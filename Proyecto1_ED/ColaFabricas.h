@@ -2,13 +2,10 @@
 #include <QDebug>
 #include<QObject>
 #include <iostream>
-#include "SubirAMemoriaArticulos.h"
+#include "articulos.h"
 
 #ifndef COLAFABRICAS_H
 #define COLAFABRICAS_H
-
-
-template <typename T>
 
 struct colaFabricas{
 
@@ -62,7 +59,6 @@ public:
 
 private:
     QList<Articulo> cola;
-
 };
 
 #endif // COLAFABRICAS_H

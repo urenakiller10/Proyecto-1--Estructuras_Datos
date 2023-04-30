@@ -26,10 +26,10 @@ struct Cliente {
         siguiente = NULL;
     }
 
-    Cliente(){}
+    Cliente(){} //Ni idea de porque hay un constructor por defecto, pero piola
 
     void imprimir(){
-        cout << "Codigo: " << codigo << " .Nombre: " << nombre << " .Prioridad: " << prioridad <<endl;
+        cout << "Codigo: " << codigo << " Nombre: " << nombre << " Prioridad: " << prioridad <<endl;
     }
 
 };
@@ -95,6 +95,17 @@ struct listaSimple{
         return contador;
     }
 
+    int prioridadCliente(int _codigo){
+        Cliente* tmp = primerCliente;
+        while(tmp->siguiente != NULL){
+            if(tmp->codigo == _codigo){
+                return tmp->prioridad;
+            }
+            tmp = tmp->siguiente;
+        }
+        return 1;
+    }
+
     void LeerClientes(){
         ifstream archivo("../Clientes.txt");
         if(!archivo){
@@ -122,26 +133,4 @@ struct listaSimple{
 };
 
 
-/*
-void LeerClientes(list<Cliente>& listaClientes) {
-    ifstream archivo("../Clientes.txt");
-    if (!archivo) {
-        cout << "Error al abrir el archivo clientes\n";
-        return;
-    }
-
-    string linea;
-    while (getline(archivo, linea)) {
-        Cliente cliente;
-        istringstream iss(linea);
-        iss >> cliente.codigo;
-        iss.ignore();
-        getline(iss, cliente.nombre, '\t');
-        iss >> cliente.prioridad;
-        listaClientes.push_back(cliente);
-    }
-
-    archivo.close();
-}
-*/
 #endif // CARGARCLIENTESMEMORIA_H
