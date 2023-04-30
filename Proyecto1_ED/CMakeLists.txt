@@ -30,6 +30,7 @@ set(PROJECT_SOURCES
         auxiliaries.h
         colaPedidos.h
         pedidos.h
+        alistadores.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
