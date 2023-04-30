@@ -95,6 +95,11 @@ struct listaSimple{
         return contador;
     }
 
+    int prioridadCliente(int _codigo){
+
+        return 1;
+    }
+
     void LeerClientes(){
         ifstream archivo("../Clientes.txt");
         if(!archivo){
