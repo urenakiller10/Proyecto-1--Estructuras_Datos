@@ -53,12 +53,19 @@ public:
                 pedido nuevoPedido = colaPed->dequeue();
                 cout << nuevoPedido.toString() <<endl;
                 mutex->unlock();
-                listaPares* listaActual =nuevoPedido.lista;
+                listaPares* listaActual = nuevoPedido.lista;
                 QThread::sleep(1); //Que dure un segundo en procesar el nuevo pedido
 
                 parOrdenado* par = listaActual->primero;
                 while(par->sig != NULL){
                     string codProd = par->codigoProducto;
+                    int cantidad = par->cantidad;
+                    if(productos.suficiente(codProd, cantidad)){
+                        cout << "Hay suficiente de " << codProd <<endl;
+                    }
+                    else{
+                        cout << "Hay suficiente de " << codProd << " a fabrica" <<endl;
+                    }
                 }
 
             }
