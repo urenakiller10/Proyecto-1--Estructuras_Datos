@@ -2,6 +2,7 @@
 #ifndef BALANCEADORDECISIONES_H
 #define BALANCEADORDECISIONES_H
 
+<<<<<<< HEAD
 #include <queue>
 //#include "HiloPedidos.h"
 #include "CargarClientesMemoria.h"
@@ -174,6 +175,8 @@ void BalanceadorDecisiones() {
     QThread::sleep(1);
 }
 }
+=======
+>>>>>>> fusion
 
 
 #endif // BALANCEADORDECISIONES_H

@@ -19,7 +19,6 @@ set(PROJECT_SOURCES
         proyecto_ed.ui
         includes.h
         timeStamp.h
-        SubirAMemoriaArticulos.h
         BalanceadorDecisiones.h
         ColaFacturacion.h
         CargarClientesMemoria.h
@@ -27,8 +26,15 @@ set(PROJECT_SOURCES
         FabricasProductos.h
         calcularTiempo.h
         ColaFabricas.h
+<<<<<<< HEAD
         Alistadores.h
 
+=======
+        articulos.h
+        auxiliaries.h
+        colaPedidos.h
+        pedidos.h
+>>>>>>> fusion
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

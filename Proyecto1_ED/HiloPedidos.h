@@ -4,149 +4,261 @@
 #include <QThread>
 #include "timeStamp.h"
 #include "BalanceadorDecisiones.h"
+#include "colaPedidos.h"
+#include "CargarClientesMemoria.h"
+#include "articulos.h"
+#include "auxiliaries.h"
+#include "pedidos.h"
 
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
 #include <string>
 #include <fstream>
 
+struct nodoArc;
+struct listaProcesados;
+
+
 class FileRead : public QThread
-
 {
+public:
+
+    //Builder
+    FileRead(listaSimple clientes, listaDoble articulos, colaPedidos _colaPed){
+        this->clientes = clientes;
+        this->articulos = articulos;
+        this->colaPed = _colaPed;
+    }
+
+
     void run() override{
-        cout << "Cuantas veces voy a ver esta linea" << endl;
         //En este punto puedo tirar lo que sea una sola vez xd
+        filesystem::path directoryPath("../pedidos");
+
+        listaProcesados* listaProc = new listaProcesados;
+        int contadorLineas = 0; //Declaracion y un valor para evitar faults
+        int numPedido = 0;
+        int numCliente;
         while (true){
-            std::filesystem::path directory_path("../pedidos");
+            for(const auto& entry : filesystem::directory_iterator(directoryPath)) {
+                if(entry.is_regular_file()){
 
-            for (const auto& entry : std::filesystem::directory_iterator(directory_path)) {
-                QThread::sleep(5); /*El numero se modifica por la cantidad de segundos que se quiera
-                esperar antes de leer de nuevo */
-                if (entry.is_regular_file()) {
-                    //Aqui pregunto si el archivo ya fue procesado (esto en basi a su nombre)
-                    std::ifstream file(entry.path());
+                    ifstream file = (entry.path());
+                    string rutaActual = entry.path().string();
+                    string r = rutaActual;
 
-                    string ruta = entry.path().string(); //Preparo la ruta como string si hay que mover xd
-                    const char* rutaC = ruta.c_str();
-                    const char* nombreArchivo = strrchr(rutaC, '\\');
-                    string nombre = string(nombreArchivo).erase(0,1);
-                    cout << "ARCHIVO ACTUAL: " <<nombre <<endl;
-                    string nuevaRuta = "..\\malos\\" + nombre;
+                    contadorLineas = 0; //Se reinicia el counter por cada archivo
+                    if(!listaProc->procesado(rutaActual)){ //Si el archivo no se ha procesado, haga
+                        //cout << "Leyendo: " << rutaActual << endl;
+                        //cout << "Nombre archivo: " << getFileName(rutaActual) <<endl;
 
-                    if (file.is_open()) {
-                        string line;
+                        if(file.is_open()){
+                            string line;
+                            listaPares* lista = new listaPares();
+                            while(getline(file, line)){
 
-                        //leer cada linea del archivo actual
-                        while (getline(file, line)) { //Cada linea es un pedido
-                            list<string> lista;
-                            size_t pos = 0;
-                            string delimiter = "\t";
-                            string token;
-
-                            while ((pos = line.find(delimiter)) != string::npos) {
-                                token = line.substr(0, pos);
-                                lista.push_back(token);
-                                line.erase(0, pos + delimiter.length());
-                            }
-                            lista.push_back(line);
-
-                            //Primera verificacion, cantidad de parametros correcta
-                            //std::cout << lista.size() << std::endl;
-                            if (lista.size() != 4){
-                                std::cout<<"ERROR EN CANTIDAD DE PARAMETROS" <<std::endl;
-                                ofstream archivoMalo(entry.path(),ofstream::app);
-                                archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR EN CANTIDAD DE PARAMETROS";
-
-                                //Aqui se mueve el archivo
-                                archivoMalo.close();
-                                break;
-                            }
-                            else {
-                                //std::cout<< "Cantidad nice" <<std::endl;
-                            }
-                            //cout << lista <<endl;
-                            list<string>::iterator it = lista.begin();
-
-
-                            //Segunda verificacion
-                            //Verificar que el numero de pedido sea entero
-
-                            try {
-                                int num = stoi(*it);
-                                if(num < 0){
-                                    cout << "ERROR, NUMERO DE PEDIDO NO PUEDE SER NEGATIVO";
-                                    ofstream archivoMalo(entry.path(),ofstream::app);
-                                    archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, NUMERO DE PEDIDO NO PUEDE SER NEGATIVO";
-
-                                    //Aqui se mueve el archivo
-                                    archivoMalo.close();
-                                    break;
+                                //Primer linea, numero de pedido
+                                if(contadorLineas == 0){
+                                    if(!isInt(line)){
+                                        //Meta lo que ocupa al archivo
+                                        file.close();
+                                        ofstream archivoMalo(entry.path(),ofstream::app);
+                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de pedido no es un valor entero";
+                                        //Cierre el archivo
+                                        archivoMalo.close();
+                                        //Invoque a mover
+                                        moverArchivos(getFileName(r));
+                                        break;
+                                        //Error de que el num de pedido no es int
+                                    }
+                                    else{
+                                        numPedido = stoi(line);
+                                    }
                                 }
+                                //Segunda linea, cod de cliente
+                                else if (contadorLineas == 1){
+                                    if(isInt(line)){
+                                        bool existe = clientes.existeCodigo(stoi(line));
+                                        if(!existe){
+                                            //Error de no existe
+                                            file.close();
+                                            ofstream archivoMalo(entry.path(),ofstream::app);
+                                            archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de cliente no existe";
+                                            //Cierre el archivo
+                                            archivoMalo.close();
+                                            //Invoque a mover
+                                            moverArchivos(getFileName(r));
+                                            break;
+                                        }
+                                        else{
+                                            numCliente = stoi(line);
+                                        }
+                                    }
+                                    else{
+                                        //Error de codigo
+                                        file.close();
+                                        ofstream archivoMalo(entry.path(),ofstream::app);
+                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de cliente no es un entero";
+                                        //Cierre el archivo
+                                        archivoMalo.close();
+                                        //Invoque a mover
+                                        moverArchivos(getFileName(r));
+                                        break;
+                                    }
+                                }
+                                //Todas las lineas que vengan debajo, las cuales se suponen son ya los pedidos
                                 else{
-                                    //Piola :D
-                                }
-                            } catch (...) {
-                                ofstream archivoMalo(entry.path(),ofstream::app);
-                                archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, NUMERO DE PEDIDO INVALIDO";
+                                    size_t pos1 = 0;
+                                    size_t pos2 = line.find('\t', pos1);
+                                    string codigoP = line.substr(pos1, pos2-pos1);
+                                    pos1 = pos2 + 1;
+                                    pos2 = line.find('\t', pos1);
+                                    string cantidad = line.substr(pos1, pos2-pos1);
 
-                                //Aqui se mueve el archivo
-                                archivoMalo.close();
-                                break;
-                                cout << "ERROR, NUMERO DE PEDIDO INVALIDO";
+                                    //cout << "Codigo: " << codigoP << " Cantidad: " << cantidad <<endl;
+
+                                    //revisa que el producto exista
+                                    if(!articulos.exists(codigoP)){
+                                        //Tira la vara a errores
+                                        cout << "Mae la vara no existe" <<endl;
+                                        file.close();
+                                        ofstream archivoMalo(entry.path(),ofstream::app);
+                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El codigo de producto "<< codigoP << " no existe";
+                                        //Cierre el archivo
+                                        archivoMalo.close();
+                                        //Invoque a mover
+                                        moverArchivos(getFileName(r));
+                                        break;
+                                    }
+                                    //revisa que la cantidad que se le paso sea entera y positiva
+                                    if(!isInt(cantidad)){
+                                        //Tira la vara a errores
+                                        cout << "Mae no mando un entero de cantidad" <<endl;
+                                        file.close();
+                                        ofstream archivoMalo(entry.path(),ofstream::app);
+                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"La cantidad del producto no es entero";
+                                        //Cierre el archivo
+                                        archivoMalo.close();
+                                        //Invoque a mover
+                                        moverArchivos(getFileName(r));
+                                        break;
+                                    }
+                                    else{
+                                        if(stoi(cantidad) < 0){
+                                            cout << "Valor negativo" <<endl;
+                                            file.close();
+                                            ofstream archivoMalo(entry.path(),ofstream::app);
+                                            archivoMalo << "\n" << getTimeDate(false) << " " <<"La cantidad del producto es negativa";
+                                            //Cierre el archivo
+                                            archivoMalo.close();
+                                            //Invoque a mover
+                                            moverArchivos(getFileName(r));
+                                            break;
+                                        } //else no importa
+                                    }
+
+                                    //cuando ya pasa toda verificacion
+
+                                    parOrdenado* par = new parOrdenado(codigoP, stoi(cantidad));
+                                    lista->insertar(par);
+
+                                }
+                                contadorLineas +=1;
                             }
 
-                            //Tercera verificacion
-                            //Verificar que el codigo de cliente exista en memoria
-                            advance(it,1);
+                            nodoArc* nodoProc = new nodoArc(r); //La ruta del archivo
+                            listaProc->insertar(nodoProc);
+                            //Aqui armar el pedido con toda la data
 
-
-                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CLIENTE NO EXISTENTE";
-
-
-                            //Cuarta verificacion
-                            //Verificar que el codigo de producto exista
-                            advance(it,1);
-                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, PRODUCTO NO EXISTENTE";
-
-                            //Quinta verificacion
-                            //Verificar que sea un entero y mayor a 0
-                            advance(it,1);
-                            try {
-                                int num = stoi(*it);
-                                if(num < 0){
-                                    cout << "ERROR, LA CANTIDAD DE PRODUCTO NO PUEDE SER NEGATIVA";
-                                    ofstream archivoMalo(entry.path(),ofstream::app);
-                                    archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, LA CANTIDAD DE PRODUCTO NO PUEDE SER NEGATIVA";
-
-                                    //Aqui se mueve el archivo
-                                    archivoMalo.close();
-                                    break;
-                                }
-                                else{
-                                    //Piola :D
-                                }
-                            } catch (...) {
-                                ofstream archivoMalo(entry.path(),ofstream::app);
-                                archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CANTIDAD DE PRODUCTO NO ES UN NUMERO";
-
-                                //Aqui se mueve el archivo
-                                archivoMalo.close();
-                                break;
-                                cout << "ERROR, CANTIDAD DE PRODUCTO NO ES UN NUMERO";
-                            }
-                            //archivoMalo << "\n" << getTimeDate(false) << " " <<"ERROR, CANTIDAD SOLICITADA INVALIDA";
-                            cout << "LINEA PASO TODO " <<endl;
+                            pedido* nuevo = new pedido(numPedido, numCliente, lista);
+                            colaPed.enqueue(*(nuevo));
                         }
                     }
+<<<<<<< HEAD
                     procesar(std::ifstream(entry.path()));
                     cout << "ARCHIVO PASAQ TODO -> PROCEDE A ENVIAR AL BALANCEADOR"<<endl;
 
 
+=======
+>>>>>>> fusion
                 }
             }
+            QThread::sleep(5); //Valor en segundos de cada cuanto se revisa el directorio en busqueda de nuevos pedidos
         }
     }
+
+    //struct nodo para la lista de archivos procesados
+    struct nodoArc{
+        string nombre = "";
+        nodoArc* sig = NULL;
+        nodoArc(string _nombre){
+            nombre = _nombre;
+            sig = NULL;
+        }
+    };
+
+    struct listaProcesados{
+        nodoArc* primerNodo = NULL; //Por si acaso
+        listaProcesados(){
+            primerNodo = NULL;
+        }
+
+        void insertar(nodoArc* nuevo){
+            if(primerNodo==NULL){
+                primerNodo = nuevo;
+            }
+            else{
+                nodoArc* tmp = primerNodo;
+                while(tmp->sig!=NULL){
+                    tmp = tmp->sig;
+                }
+                tmp->sig = nuevo;
+            }
+        }
+
+        bool procesado(string archivo){
+            if(primerNodo!=NULL){
+                nodoArc* tmp = primerNodo;
+                while(tmp->sig!=NULL){
+                    if(tmp->nombre == archivo){
+                        return true;
+                    }
+                    tmp = tmp->sig;
+                }
+            }
+            return false;
+        }
+
+    };
+
+    //Esto es la mamadelamamadelamamademama, pero se ocupa
+    string getFileName(string ruta){
+        const char* rutaC = ruta.c_str();
+        const char* nombreArchivo = strrchr(rutaC, '\\');
+        string nombre = string(nombreArchivo).erase(0,1);
+        cout << "ARCHIVO ACTUAL: " <<nombre <<endl;
+        return nombre;
+    }
+
+    void moverArchivos(string nombreArchivo){
+        string fuente = "../Pedidos/" + nombreArchivo;
+        string destino = "../malos/" + nombreArchivo;
+        cout << "Fuente: " << fuente << " Destino: " << destino << endl;
+        try {
+            filesystem::rename(fuente, destino);
+            cout << "Archivo movido exitosamente" << endl;
+        } catch (...) {
+            cout << "Error al mover el archivo: " << endl;
+        }
+    }
+
+
+private:
+    listaSimple clientes;
+    listaDoble articulos;
+    colaPedidos colaPed;
 };
+
 
 
 
