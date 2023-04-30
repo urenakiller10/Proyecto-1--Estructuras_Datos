@@ -97,10 +97,11 @@ struct listaSimple{
 
     int prioridadCliente(int _codigo){
         Cliente* tmp = primerCliente;
-        int contador = 0;
         while(tmp->siguiente != NULL){
+            if(tmp->codigo == _codigo){
+                return tmp->prioridad;
+            }
             tmp = tmp->siguiente;
-            contador += 1;
         }
         return 1;
     }
