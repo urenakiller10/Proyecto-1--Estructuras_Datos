@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "pedidos.h"
+#include "articulos.h"
 
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)
@@ -76,4 +77,24 @@ void Proyecto_ED::on_B_Alistadores_clicked()
 {
     qDebug() << "Muestra la cola de los alistadores";
 }
+
+
+void Proyecto_ED::on_B_Clientes_clicked()
+{
+    listaSimple lista;
+    lista.LeerClientes();
+    Cliente* tmp = lista.primerCliente;
+    while(tmp != NULL){
+        tmp->imprimir();
+        tmp = tmp->siguiente;
+    }
+
+}
+void Proyecto_ED::on_B_articulos_clicked()
+{
+    listaDoble articulos;
+    articulos.cargar();
+    articulos.imprimirLista();
+}
+
 
