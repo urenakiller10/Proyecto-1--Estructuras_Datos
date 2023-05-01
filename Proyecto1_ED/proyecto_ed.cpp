@@ -1,5 +1,5 @@
 #include "includes.h"
-
+#include "pedidos.h"
 
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)
