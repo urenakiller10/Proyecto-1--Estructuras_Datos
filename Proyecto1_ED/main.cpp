@@ -8,6 +8,7 @@
 #include "ColaFabricas.h"
 #include "QMutex"
 #include "alistadores.h"
+#include "proyecto_ed.h"
 
 
 
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     Proyecto_ED w;
     w.show();
+
 
 
 

@@ -1,5 +1,9 @@
 #ifndef PROYECTO_ED_H
 #define PROYECTO_ED_H
+#include <QThread> // si se usa Qt para la GUI
+#include <filesystem> // para trabajar con archivos y directorios
+#include <fstream> // para leer y escribir archivos
+#include <string> // para trabajar con cadenas de texto
 
 #include "includes.h"
 #include "colaPedidos.h"
@@ -22,6 +26,8 @@ public:
 
     listaSimple clientes;
     listaDoble articulos;
+    //colaPedidos micola;
+    QMutex mutexPedidos;
 
 private slots:
     void on_B_FabricaComodin_clicked();

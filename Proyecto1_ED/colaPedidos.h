@@ -43,8 +43,8 @@ public:
 
     void print()
     {
-        qDebug() << "Queue size:" << size();
-        qDebug() << "Queue contents:";
+        qDebug() << "Tamaño de la cola" << size();
+        qDebug() << "Cola de pedidos:";
         for (pedido* value : cola) {
             cola.insert(0,value);
             //value.imprimir();

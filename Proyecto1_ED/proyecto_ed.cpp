@@ -1,6 +1,10 @@
 #include "includes.h"
 #include "pedidos.h"
 #include "articulos.h"
+#include "HiloPedidos.h"
+#include "QMutex"
+
+
 
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)
@@ -9,21 +13,32 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //Leer los clientes y subirlos a memoria
     clientes.LeerClientes();
+
+    //Leer los articulos y subirlos a memoria
     articulos.cargar();
+
+
     colaPedidos* colaP = new colaPedidos();
+    FileRead* hiloPedidos = new FileRead(clientes, articulos, colaP, &mutexPedidos);
+    hiloPedidos->start();
 }
 
 Proyecto_ED::~Proyecto_ED()
 {
     delete ui;
 }
-
 //BOTONES DE LAS COLAS
 
 //----------------------------------------------------ColaPedidos-------------------------------------------------------
 void Proyecto_ED::on_B_ColaPedidos_clicked()
+
 {
+    //Leer los pedidos
+    colaP->print();
+
+
     qDebug() << "Muestra la cola del lector de pedidos";
 }
 

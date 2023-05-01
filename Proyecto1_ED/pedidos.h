@@ -2,6 +2,7 @@
 #ifndef PEDIDOS_H
 #define PEDIDOS_H
 
+
 struct pedido;
 struct parOrdenado;
 struct listaPares;
