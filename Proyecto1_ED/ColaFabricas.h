@@ -3,6 +3,7 @@
 #include<QObject>
 #include <iostream>
 #include "articulos.h"
+#include "pedidos.h"
 
 #ifndef COLAFABRICAS_H
 #define COLAFABRICAS_H
@@ -11,12 +12,12 @@ struct colaFabricas{
 
 public:
 
-    void enqueue(Articulo value)
+    void enqueue(parOrdenado value)
     {
         cola.append(value);
     }
 
-    Articulo dequeue()
+    parOrdenado dequeue()
     {
         Q_ASSERT(!cola.isEmpty());
         return cola.takeFirst();
@@ -36,8 +37,8 @@ public:
     {
         qDebug() << "Queue size:" << size();
         qDebug() << "Queue contents:";
-        for (Articulo value : cola) {
-            value.imprimir();
+        for (parOrdenado value : cola) {
+//            value.imprimir();
         }
 
     }
@@ -49,8 +50,8 @@ public:
             if (i < cola.size() - 1) {
                 result.append('-');
             }
-            Articulo actual = cola.at(i);
-            result.append(actual.to_String().c_str());
+            parOrdenado actual = cola.at(i);
+            result.append(actual.toString());
 
         }
         return result;
@@ -58,7 +59,7 @@ public:
 
 
 private:
-    QList<Articulo> cola;
+    QList<parOrdenado> cola;
 };
 
 #endif // COLAFABRICAS_H

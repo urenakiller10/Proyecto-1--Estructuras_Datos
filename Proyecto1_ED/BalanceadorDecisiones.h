@@ -1,13 +1,22 @@
-
 #ifndef BALANCEADORDECISIONES_H
 #define BALANCEADORDECISIONES_H
 
-<<<<<<< HEAD
-#include <queue>
-//#include "HiloPedidos.h"
-#include "CargarClientesMemoria.h"
-#include "SubirAMemoriaArticulos.h"
+#include <QThread>
 #include "ColaFabricas.h"
+
+#include <QThread>
+#include "timeStamp.h"
+#include "colaPedidos.h"
+#include "CargarClientesMemoria.h"
+#include "articulos.h"
+#include "auxiliaries.h"
+#include "pedidos.h"
+#include "QMutex"
+
+#include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
+#include <iostream>
+#include <string>
+#include <fstream>
 
 //***OJOOO****: Para aquí agregar a la cola de de alistados una vez que el balanceador toma decisión:
 // ColaAlisto cola;
@@ -18,61 +27,94 @@
 
 //Se crean las colas de tipo Artículo de cada tipo fabrica
 
-colaFabricas<Articulo> colaFabricaA;
-colaFabricas<Articulo> colaFabricaB;
-colaFabricas<Articulo> colaFabricaC;
-colaFabricas<Articulo> colaFabricaComodin;
+class Balanceador : public QThread
+{
+public:
 
-
-
-void procesar(ifstream pedidoValidado){
-
-}
-
-void procesarPedidos(queue<string>& pedidos) {
-    list<Cliente> listaClientes;
-    //LeerClientes(listaClientes);
-
-    for (const auto& cliente : listaClientes) {
-        string archivo = "../pedidos/" + to_string(cliente.codigo) + ".txt";
-        ifstream file(archivo);
-
-        if (file.is_open()) {
-            string line;
-            while (getline(file, line)) {
-                pedidos.push(line + " " + to_string(cliente.prioridad));
-            }
-        }
+    Balanceador(){}
+    Balanceador(colaFabricas colaA, colaFabricas colaB, colaFabricas colaC, colaFabricas colaX, listaDoble _productos, colaPedidos* _colaPed, QMutex* mutex){
+        this->colaFabricaA = colaA;
+        this->colaFabricaB = colaB;
+        this->colaFabricaC = colaC;
+        this->colaFabricaComodin = colaX;
+        this->productos = _productos;
+        this->colaPed = _colaPed;
+        this->mutex = mutex;
+        cout << "Se crea instancia de balanceador" << endl;
     }
-}
 
-bool verificarExistencias(const string& pedido, list<Articulo*>& articulos) {
+    void run() override{
+        string codProd = "";
+        int cantidad = 0;
+        while(true){
+            mutex->lock();
+            if(!colaPed->isEmpty()){
+                cout << "Hay un pedido por atender"<<endl;
+                pedido* nuevoPedido = colaPed->dequeue();
+                listaPares* listaActual = nuevoPedido->lista;
+                cout << nuevoPedido->toString() <<endl;
+                mutex->unlock();
 
-    // Extraer información del pedido
-    istringstream iss(pedido);
-    string codigo;
-    int cantidad;
-    iss >> codigo >> cantidad;
+                QThread::sleep(1); //Que dure un segundo en procesar el nuevo pedido
 
-    // Buscar el artículo en la lista de artículos
-    for (auto& articulo : articulos) {
-        if (articulo->codigo == codigo) {
-            if (articulo->cantidad >= cantidad) {
-                articulo->cantidad -= cantidad;
-                return true;
+                procesar(nuevoPedido);
             }
-            else {
-                return false;
+            else{
+                mutex->unlock();
             }
+            QThread::sleep(1);
         }
     }
 
-    return false;
-}
+    void procesar(pedido* _pedido){
+        cout << "Funcion procesar" <<endl;
+        listaPares* lista = _pedido->lista;
+        parOrdenado* tmp = lista->primero;
+        while(tmp->sig != NULL){
+            //cout << tmp->toString() <<endl;
+            evaluar(tmp);
+            tmp = tmp->sig;
+        }
+        //cout << tmp->toString() <<endl;
+        evaluar(tmp);
+    }
+
+    void evaluar(parOrdenado* par){
+        if(productos.suficiente(par->codigoProducto, par->cantidad)){
+            cout << "Sufientes de " << par->codigoProducto << endl;
+        }
+        else{
+            cout << "Insufientes de " << par->codigoProducto << " se va a fabrica"<<endl;
+        }
+    }
+
+private:
+    colaFabricas colaFabricaA;
+    colaFabricas colaFabricaB;
+    colaFabricas colaFabricaC;
+    colaFabricas colaFabricaComodin;
+    listaDoble productos;
+    colaPedidos* colaPed;
+    QMutex* mutex;
+};
+
+
+
+
+
+/*
+
+
+
 
 void BalanceadorDecisiones() {
-    list<Articulo*> articulos;
-    subirArticulos(articulos);
+    //list<Articulo*> listarticulos = new listarticulos(listarticulos);
+
+
+    colaFabricas colaFabricaA;
+    colaFabricas colaFabricaB;
+    colaFabricas colaFabricaC;
+    colaFabricas colaFabricaComodin;
 
     while (true) {
         queue<string> pedidos;
@@ -82,7 +124,7 @@ void BalanceadorDecisiones() {
             string pedido = pedidos.front();
             pedidos.pop();
 
-            if (verificarExistencias(pedido, articulos)) {
+            if (verificarExistencias(pedido, listarticulos)) {
 
                 cout<<"Cantidad suficiente, va a la cola de alisto"<<endl;
             }
@@ -92,7 +134,7 @@ void BalanceadorDecisiones() {
                 //Primero pregunte si es A o B, si es A y A tiene cola tiene mas pequeña (NO) va a la comodin B y viceversa.
 
                 // Buscar el artículo en la lista de artículos
-                for (auto& articulo : articulos) {
+                for (auto& articulo : listarticulos) {
                     if (articulo->codigo == "A") {
                         if(colaFabricaA.size() <= colaFabricaComodin.size()) {
 
@@ -104,7 +146,7 @@ void BalanceadorDecisiones() {
                             cout << "Va a la cola de la Fabrica Comodin" << endl;
                         }
                         break;
-                        }
+                    }
                     else if (articulo->codigo =="B"){
 
                         if (colaFabricaB.size() <= colaFabricaComodin.size()) {
@@ -118,66 +160,63 @@ void BalanceadorDecisiones() {
                         }
                     }
 
-                        else if (articulo->codigo =="C"){
+                    else if (articulo->codigo =="C"){
 
-                            colaFabricaC.enqueue(*articulo);
-                            cout << "Va a la cola de Fabrica C" << endl;
+                        colaFabricaC.enqueue(*articulo);
+                        cout << "Va a la cola de Fabrica C" << endl;
+                        break;
+                    }
+
+                    else{
+                        cout << "La Categoría del producto es inválida, debe de ser A, B o C" << endl;
                             break;
-                        }
-
-                        else{
-                            cout << "La Categoría del producto es inválida, debe de ser A, B o C" << endl;
-                                break;
-                        }
+                    }
                 }
 
-//                        }
-//                switch (articulos->codigo) {
-//                case 'A':
-//                    if (colaFabricaA.size() <= colaFabricaComodin.size()) {
+                //                        }
+                //                switch (articulos->codigo) {
+                //                case 'A':
+                //                    if (colaFabricaA.size() <= colaFabricaComodin.size()) {
 
-//                        colaFabricaA.enqueue(*articulo);
-//                        cout << "Va a la cola de la Fabrica A" << endl;
+                //                        colaFabricaA.enqueue(*articulo);
+                //                        cout << "Va a la cola de la Fabrica A" << endl;
 
-//                    } else {
-//                        colaFabricaComodin.enqueue(*articulo);
-//                        cout << "Va a la cola de la Fabrica Comodin" << endl;
-//                    }
-//                    break;
-//                case 'B':
-//                    if (colaFabricaB.size() <= colaFabricaComodin.size()) {
+                //                    } else {
+                //                        colaFabricaComodin.enqueue(*articulo);
+                //                        cout << "Va a la cola de la Fabrica Comodin" << endl;
+                //                    }
+                //                    break;
+                //                case 'B':
+                //                    if (colaFabricaB.size() <= colaFabricaComodin.size()) {
 
-//                        colaFabricaB.enqueue(*articulo);
-//                        cout << "Va a la cola de la Fabrica B" << endl;
+                //                        colaFabricaB.enqueue(*articulo);
+                //                        cout << "Va a la cola de la Fabrica B" << endl;
 
-//                    } else {
-//                        colaFabricaComodin.enqueue(*articulo);
-//                        cout << "Va a la cola Fabrica Comodin" << endl;
-//                    }
-//                    break;
-//                case 'C':
+                //                    } else {
+                //                        colaFabricaComodin.enqueue(*articulo);
+                //                        cout << "Va a la cola Fabrica Comodin" << endl;
+                //                    }
+                //                    break;
+                //                case 'C':
 
-//                    colaFabricaC.enqueue(*articulo);
-//                    cout << "Va a la cola de Fabrica C" << endl;
-//                    break;
+                //                    colaFabricaC.enqueue(*articulo);
+                //                    cout << "Va a la cola de Fabrica C" << endl;
+                //                    break;
 
-//                default:
-//                    cout << "La Categoría del producto es inválida, debe de ser A, B o C" << endl;
-//                        break;
-//                }
+                //                default:
+                //                    cout << "La Categoría del producto es inválida, debe de ser A, B o C" << endl;
+                //                        break;
+                //                }
 
-//        }
- }
+                //        }
+            }
         }
 
 
-    // Esperar un tiempo antes de procesar nuevos pedidos
-    QThread::sleep(1);
+        // Esperar un tiempo antes de procesar nuevos pedidos
+        QThread::sleep(1);
+    }
 }
-}
-=======
->>>>>>> fusion
-
-
+*/
 #endif // BALANCEADORDECISIONES_H
 

@@ -1,5 +1,5 @@
 #include "includes.h"
-
+#include "pedidos.h"
 
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)
@@ -70,10 +70,10 @@ void Proyecto_ED::on_B_ColaFacturacion_clicked()
     qDebug() << "Muestra la cola de la Facturacion";
 }
 
-//-----------------------------------------------------Alistadores--------------------------------------------------------------
+//------------------------------------------------------Alistadores--------------------------------------------------------
 
 void Proyecto_ED::on_B_Alistadores_clicked()
 {
-    qDebug() << "Muestra la cola de los alistadores:ocupados y desocupados";
+    qDebug() << "Muestra la cola de los alistadores";
 }
 

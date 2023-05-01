@@ -9,6 +9,7 @@
 #include "articulos.h"
 #include "auxiliaries.h"
 #include "pedidos.h"
+#include "QMutex"
 
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
@@ -24,22 +25,24 @@ class FileRead : public QThread
 public:
 
     //Builder
-    FileRead(listaSimple clientes, listaDoble articulos, colaPedidos _colaPed){
+    FileRead(listaSimple clientes, listaDoble articulos, colaPedidos* _colaPed, QMutex* mutex){
         this->clientes = clientes;
         this->articulos = articulos;
         this->colaPed = _colaPed;
+        this->mutex = mutex;
     }
 
 
     void run() override{
         //En este punto puedo tirar lo que sea una sola vez xd
+        //cout << "Arranca el hilo de lectura de pedidos" << endl;
         filesystem::path directoryPath("../pedidos");
-
         listaProcesados* listaProc = new listaProcesados;
         int contadorLineas = 0; //Declaracion y un valor para evitar faults
         int numPedido = 0;
         int numCliente;
         while (true){
+            //cout << "Leyendo pedidos" <<endl;
             for(const auto& entry : filesystem::directory_iterator(directoryPath)) {
                 if(entry.is_regular_file()){
 
@@ -169,9 +172,12 @@ public:
                             nodoArc* nodoProc = new nodoArc(r); //La ruta del archivo
                             listaProc->insertar(nodoProc);
                             //Aqui armar el pedido con toda la data
+                            //cout << "Se va a crear el pedido" << endl;
 
+                            mutex->lock();
                             pedido* nuevo = new pedido(numPedido, numCliente, lista);
-                            colaPed.enqueue(*(nuevo));
+                            colaPed->enqueue(nuevo);
+                            mutex->unlock();
                         }
                     }
 <<<<<<< HEAD
@@ -256,7 +262,8 @@ public:
 private:
     listaSimple clientes;
     listaDoble articulos;
-    colaPedidos colaPed;
+    colaPedidos* colaPed;
+    QMutex* mutex;
 };
 
 

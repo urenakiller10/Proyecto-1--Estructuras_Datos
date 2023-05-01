@@ -44,7 +44,7 @@ struct Articulo{
         return ubicacion;
     }
 
-    string toString(){
+    string to_String(){
         string result = "";
         result = "Code:" + codigo +" Cant:" + to_string(existencias) + " Seg:" + to_string(segundosFabricacion) + " Ubi:" + ubicacion;
 
@@ -104,8 +104,6 @@ struct listaDoble{
         return false;
     }
 
-
-
     //Metodo para ver si hay suficientes existencias de un producto en bodega
     bool suficiente(string _codigo, int cantidad){
         if(primerNodo != NULL){
@@ -163,7 +161,18 @@ struct listaDoble{
         return 0;
     }
 
+    void actualizarStock(int n, string _codigo){
+        Articulo* actual = primerNodo;
+        while(actual->siguiente!=NULL){
+            if(actual->codigo == _codigo){
+                actual->existencias += n;
+            }
+            actual = actual->siguiente;
+        }
+    }
+
     void cargar(){
+        //cout << "Se intenta leer articulos" << endl;
         ifstream archivo("../Articulos.txt");
         if (!archivo.is_open()) {
             cerr << "No se pudo abrir el archivo Articulos.txt" << endl;

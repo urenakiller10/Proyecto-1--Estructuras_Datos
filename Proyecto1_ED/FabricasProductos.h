@@ -1,5 +1,6 @@
 #include <QtCore>
 #include "ColaFabricas.h"
+#include "colaPedidos.h"
 #ifndef FABRICASPRODUCTOS_H
 #define FABRICASPRODUCTOS_H
 #include "articulos.h"

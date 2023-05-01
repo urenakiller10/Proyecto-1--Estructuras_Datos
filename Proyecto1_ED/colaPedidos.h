@@ -15,34 +15,17 @@ public:
     colaPedidos(){}
 
     colaPedidos(listaSimple clientes){
+        //cout << "Se crea la cola de pedidos " <<endl;
         this->clientes = clientes;
     }
 
-    void enqueue(pedido value)
+    void enqueue(pedido* value)
     {
-        //Obtener las prios
-        if(!isEmpty()){ //Si existe algo para poder tomarlo
-            pedido primero = cola.constFirst();
-            int primerPrio = clientes.prioridadCliente(primero.codCliente);
-            int prioActual = clientes.prioridadCliente(value.codCliente);
-
-            if(prioActual > primerPrio){
-                cola.insert(0, value);
-            }
-            else{
-                cola.append(value); //Si el primero de la cola es el de mayor prioridad, se va al final
-            }
-        }
-        else{
-            cola.append(value); //Si no hay nada en la lista, se va de primero
-        }
+        cola.append(value);
     }
 
-    void enqueueFirst(pedido value){
 
-    }
-
-    pedido dequeue()
+    pedido* dequeue()
     {
         Q_ASSERT(!cola.isEmpty());
         return cola.takeFirst();
@@ -62,7 +45,7 @@ public:
     {
         qDebug() << "Queue size:" << size();
         qDebug() << "Queue contents:";
-        for (pedido value : cola) {
+        for (pedido* value : cola) {
             cola.insert(0,value);
             //value.imprimir();
         }
@@ -76,8 +59,8 @@ public:
             if (i < cola.size() - 1) {
                 result.append('-');
             }
-            pedido actual = cola.at(i);
-            //result.append(actual.toString());
+            pedido* actual = cola.at(i);
+            result.append(actual->toString());
 
         }
         return result;
@@ -85,7 +68,7 @@ public:
 
 
 private:
-    QList<pedido> cola;
+    QList<pedido*> cola;
     listaSimple clientes;
 };
 

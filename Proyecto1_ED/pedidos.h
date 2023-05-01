@@ -16,6 +16,12 @@ struct pedido{
         codCliente = _codCliente;
         lista = _lista;
     }
+
+    string toString(){
+        string r = "Id: " + to_string(id) + " cod cliente " + to_string(codCliente);
+        return r;
+    }
+
 };
 
 
@@ -30,6 +36,12 @@ struct parOrdenado{
         codigoProducto = _codProd;
         cantidad = _cantidad;
     }
+
+    string toString(){
+        string result = "Articulo: " + codigoProducto + " Cantidad: " + to_string(cantidad);
+        return result;
+    }
+
 };
 
 //parOrdenado->codigo
