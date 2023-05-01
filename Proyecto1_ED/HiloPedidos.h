@@ -180,13 +180,6 @@ public:
                             mutex->unlock();
                         }
                     }
-<<<<<<< HEAD
-                    procesar(std::ifstream(entry.path()));
-                    cout << "ARCHIVO PASAQ TODO -> PROCEDE A ENVIAR AL BALANCEADOR"<<endl;
-
-
-=======
->>>>>>> fusion
                 }
             }
             QThread::sleep(5); //Valor en segundos de cada cuanto se revisa el directorio en busqueda de nuevos pedidos
