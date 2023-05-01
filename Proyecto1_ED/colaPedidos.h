@@ -15,7 +15,7 @@ public:
     colaPedidos(){}
 
     colaPedidos(listaSimple clientes){
-        //cout << "Se crea la cola de pedidos " <<endl;
+        cout << "Se crea la cola de pedidos " <<endl;
         this->clientes = clientes;
     }
 
@@ -47,7 +47,7 @@ public:
         qDebug() << "Cola de pedidos:";
         for (pedido* value : cola) {
             cola.insert(0,value);
-            //value.imprimir();
+            //value->imprimir();
         }
 
     }

@@ -26,7 +26,7 @@ public:
 
     listaSimple clientes;
     listaDoble articulos;
-    //colaPedidos micola;
+
     QMutex mutexPedidos;
 
 private slots:

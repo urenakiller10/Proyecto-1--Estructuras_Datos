@@ -35,14 +35,14 @@ public:
 
     void run() override{
         //En este punto puedo tirar lo que sea una sola vez xd
-        //cout << "Arranca el hilo de lectura de pedidos" << endl;
+        cout << "Arranca el hilo de lectura de pedidos" << endl;
         filesystem::path directoryPath("../pedidos");
         listaProcesados* listaProc = new listaProcesados;
         int contadorLineas = 0; //Declaracion y un valor para evitar faults
         int numPedido = 0;
         int numCliente;
         while (true){
-            //cout << "Leyendo pedidos" <<endl;
+            cout << "Leyendo pedidos" <<endl;
             for(const auto& entry : filesystem::directory_iterator(directoryPath)) {
                 if(entry.is_regular_file()){
 
@@ -58,7 +58,10 @@ public:
                         if(file.is_open()){
                             string line;
                             listaPares* lista = new listaPares();
+                            std::cout<<"contenido de"<<entry.path().filename()<<":"<<std::endl;
+
                             while(getline(file, line)){
+
 
                                 //Primer linea, numero de pedido
                                 if(contadorLineas == 0){
@@ -173,6 +176,14 @@ public:
                             listaProc->insertar(nodoProc);
                             //Aqui armar el pedido con toda la data
                             //cout << "Se va a crear el pedido" << endl;
+
+                            //Esto es para imprimir por mientras xd
+
+                            file.clear();
+                            file.seekg(1);
+                            while (getline(file, line)) {
+                            cout << line << endl;
+                            }
 
                             mutex->lock();
                             pedido* nuevo = new pedido(numPedido, numCliente, lista);

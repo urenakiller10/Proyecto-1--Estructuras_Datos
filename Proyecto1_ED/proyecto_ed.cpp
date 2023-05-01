@@ -20,9 +20,10 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
     articulos.cargar();
 
 
-    colaPedidos* colaP = new colaPedidos();
+    colaP = new colaPedidos();
     FileRead* hiloPedidos = new FileRead(clientes, articulos, colaP, &mutexPedidos);
     hiloPedidos->start();
+
 }
 
 Proyecto_ED::~Proyecto_ED()
@@ -37,9 +38,6 @@ void Proyecto_ED::on_B_ColaPedidos_clicked()
 {
     //Leer los pedidos
     colaP->print();
-
-
-    qDebug() << "Muestra la cola del lector de pedidos";
 }
 
 //------------------------------------------------------Balanceador-----------------------------------------------------
