@@ -1,19 +1,10 @@
-#include "includes.h"
+
 #ifndef AUXILIARIES_H
 #define AUXILIARIES_H
 
-//retonar -1 si falla
-bool isInt(string cadena){
+#include <string>
 
-    try {
-        int n = stoi(cadena);
-    }
-    catch (...) {return false;}
-    return true;
-}
-
-
-
-
+// Declaración de la función isInt
+bool isInt(std::string cadena);
 
 #endif // AUXILIARIES_H

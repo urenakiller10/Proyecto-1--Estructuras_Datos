@@ -15,6 +15,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(PROJECT_SOURCES
         main.cpp
         proyecto_ed.cpp
+        isInt.cpp
         proyecto_ed.h
         proyecto_ed.ui
         includes.h
@@ -31,6 +32,7 @@ set(PROJECT_SOURCES
         colaPedidos.h
         pedidos.h
         alistadores.h
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
