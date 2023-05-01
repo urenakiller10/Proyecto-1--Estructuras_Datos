@@ -1,8 +1,7 @@
-1
-001
-A01	10
-A03	11
-B09	12
-B00	ll
-04-29-23 18_48_39 El numero de producto no existe
-04-29-23 18_50_42 El numero de producto no existe
+5
+002	
+A01	12
+C01	12
+A01	12
+C01	12
+05/01/23 14:07:00 El numero de cliente no existe

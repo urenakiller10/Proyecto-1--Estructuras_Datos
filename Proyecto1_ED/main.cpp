@@ -10,7 +10,7 @@
 #include "alistadores.h"
 #include "proyecto_ed.h"
 #include <QApplication>
-#include <QMessageBox>
+
 
 
 
@@ -18,20 +18,46 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    Proyecto_ED w;
-    w.show();
+
+
+
+    listaSimple clientesR;
+    listaDoble articulosR;
+
+    bool clientesCargados = clientesR.LeerClientes();
+    bool articulosCargados = articulosR.cargar();
+    bool arranque = true;
+
+    if(clientesCargados){
+        cout << "Se cargaron los clientes" <<endl;
+    }
+    else
+    {
+        cout << "NO se cargaron los clientes" <<endl;
+        arranque = arranque&&false;
+    }
+
+    if(articulosCargados){
+        cout << "Se cargaron los articulos" <<endl;
+    }
+    else
+    {
+        cout << "NO se cargaron los articulos" <<endl;
+        arranque = arranque&&false;
+    }
+
+
+
+
+        //app.quit();
+    if(arranque){
+        Proyecto_ED w;
+        w.show();
+    } else{return 0;}
 
     //Ventana de error de pedidos, el text se cambia por lo que uno quiera. Lo otro es para que cuando se le dé "OK" se cierre todo
 
-    QMessageBox msgBox;
-    msgBox.setText("Error en uno de los pedidos");
-    msgBox.setIcon(QMessageBox::Critical);
-    msgBox.addButton(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
 
-    QObject::connect(&msgBox, &QMessageBox::buttonClicked, &w, &QWidget::close);
-
-    msgBox.exec();
 
     return app.exec();
 

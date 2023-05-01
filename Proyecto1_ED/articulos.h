@@ -183,12 +183,12 @@ struct listaDoble{
         }
     }
 
-    void cargar(){
+    bool cargar(){
         //cout << "Se intenta leer articulos" << endl;
         ifstream archivo("../Articulos.txt");
         if (!archivo.is_open()) {
             cerr << "No se pudo abrir el archivo Articulos.txt" << endl;
-            return;
+            return false;
         }
         string linea;
         int cantidadAlm, tiempoFab;
@@ -221,44 +221,53 @@ struct listaDoble{
             } else{
                 //Aqui tira error y croma
                 cout << "EL TIEMPO NO ES UN NUMERO" <<endl;
+                return false;
             }
 
             //cantidad menor que 0
             if(cantidadAlm < 0){
                 //Error de cantidad menor a 0
                 cout << "LA CANTIDAD ES MENOR A 0" <<endl;
+                return false;
             }
 
             //Tiempo de ejecucion menor a 0
             if(tiempoFab <= 0){
                 //Error de tiempo de fabricacion menor igual a 0
                 cout << "TIEMPO DE FABRICACION MENOR A 0" <<endl;
+                return false;
             }
 
             //Verificar que sea tipo A,B o C
             if(categoria == "A" && categoria == "B" && categoria == "C"){
                 //error de tipo
                 cout << "CATEGORIA NO VALIDA" <<endl;
+                return false;
             } //else no hace nada
 
             if (!(categoria == "A" || categoria == "B" || categoria == "C")) {
                 std::cout << "CAT NO VALIDA" << std::endl;
+                return false;
             }
-
-            if(exists(codigo)){
-               cout << "YA HAY UN PRODUCTO CON ESTE CODIGO" <<endl;
+            bool existe = exists(codigo);
+            if(existe){
+                cout << "YA HAY UN PRODUCTO CON ESTE CODIGO " << codigo<<endl;
+                return false;
             }
 
             if(ubicacionOcupada(ubicacion)){
                 //error de ubicacion ya ocupada
-               cout << "YA HAY UN PRODUCTO EN ESTA ZONA DEL ALMACEN" <<endl;
+               cout << "YA HAY UN PRODUCTO EN ESTA ZONA DEL ALMACEN " << codigo <<endl;
+                return false;
             }
 
             //Ya paso todo y esta bien, se supone
             Articulo* articulo = new Articulo(codigo, cantidadAlm, tiempoFab, categoria, ubicacion);
             insertar(articulo); //inserta en la lista doble
         }
+        return true;
     }
+
 };
 
 #endif // ARTICULOS_H
