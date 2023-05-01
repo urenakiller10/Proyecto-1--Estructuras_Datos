@@ -68,7 +68,6 @@ struct listaSimple{
         }
 
         while(tmp->siguiente != NULL){
-            cout << "Llego aca2" <<endl;
             tmp->imprimir();
             tmp = tmp->siguiente;
         }

@@ -8,6 +8,10 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
     , ui(new Ui::Proyecto_ED)
 {
     ui->setupUi(this);
+
+    clientes.LeerClientes();
+    articulos.cargar();
+    colaPedidos* colaP = new colaPedidos();
 }
 
 Proyecto_ED::~Proyecto_ED()
@@ -81,19 +85,12 @@ void Proyecto_ED::on_B_Alistadores_clicked()
 
 void Proyecto_ED::on_B_Clientes_clicked()
 {
-    listaSimple lista;
-    lista.LeerClientes();
-    Cliente* tmp = lista.primerCliente;
-    while(tmp != NULL){
-        tmp->imprimir();
-        tmp = tmp->siguiente;
-    }
+    clientes.imprimir();
 
 }
 void Proyecto_ED::on_B_articulos_clicked()
 {
-    listaDoble articulos;
-    articulos.cargar();
+
     articulos.imprimirLista();
 }
 

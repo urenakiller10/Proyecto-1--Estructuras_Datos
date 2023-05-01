@@ -3,6 +3,9 @@
 
 #include "includes.h"
 #include "colaPedidos.h"
+#include "pedidos.h"
+#include "articulos.h"
+#include "QMutex"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Proyecto_ED; }
@@ -16,6 +19,9 @@ class Proyecto_ED : public QMainWindow
 public:
     Proyecto_ED(QWidget *parent = nullptr);
     ~Proyecto_ED();
+
+    listaSimple clientes;
+    listaDoble articulos;
 
 private slots:
     void on_B_FabricaComodin_clicked();
