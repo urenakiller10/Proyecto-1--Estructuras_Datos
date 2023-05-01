@@ -1,4 +1,3 @@
-
 #ifndef ALISTADORES_H
 #define ALISTADORES_H
 
@@ -100,15 +99,15 @@ public:
                 alistador->tiempo_restante--;
             } else {
                 cout << "4Alistador numero " << alistador->id << " completó el pedido numero " << alistador->pedido_asignado << endl;
-                                                                                                                                  alistador->completar_pedido();
+                                                                                                                                    alistador->completar_pedido();
                 // revisar si hay pedidos pendientes en la cola
                 if (!pedidos.empty()) {
                     alistador->asignar_pedido(pedidos.front(),"A01");
                     pedidos.pop();
                     continue;
-               } else {
+                } else {
                     break;
-               }
+                }
             }
         }
     }
@@ -128,7 +127,7 @@ public:
         // si no hay alistadores libres, poner el pedido en la cola
         if (alistador_libre == nullptr) {
             cout << "No hay alistadores disponibles en este momento. El pedido " << pedido << " se pondrá en cola." << endl;
-             pedidos.push(pedido);
+                                                                                                                           pedidos.push(pedido);
             return;
         }
 
@@ -156,7 +155,7 @@ public:
             // si no hay alistadores libres, salir del ciclo y volver a revisar la cola más tarde
             if (alistador_libre == nullptr) {
                 cout << "No hay alistadores disponibles en este momento. El pedido " << pedidos.front() << " seguira en cola"<<endl;
-                    break;
+                break;
             }
 
             // asignar el pedido al alistador libre
@@ -170,7 +169,7 @@ public:
         }
     }
 
-//Espera hasta que terminen todos los hilos, es decir, que se terminen de procesar todos los pedidos
+    //Espera hasta que terminen todos los hilos, es decir, que se terminen de procesar todos los pedidos
     void esperar_trabajo_terminado() {
         for (thread& t : threads) {
             t.join();
