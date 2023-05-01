@@ -7,47 +7,54 @@
 #include "colaPedidos.h"
 #include "ColaFabricas.h"
 #include "QMutex"
+#include "alistadores.h"
+
+
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    Proyecto_ED w;
+    w.show();
+
 
 //mutex como parametro
-    QMutex mutexPedidos;
+
+    //QMutex mutexPedidos;
 
 
     //Se leen los clientes
 
-    listaSimple clientes;
-    clientes.LeerClientes();
+//    listaSimple clientes;
+//    clientes.LeerClientes();
 
-    //Se cargan los artículos
 
-    listaDoble articulos;
-    articulos.cargar();
+//    //Se cargan los artículos
 
-    colaPedidos* colaPed = new colaPedidos(clientes);
+//    listaDoble articulos;
+//    articulos.cargar();
 
-    //Se leen los pedidos
-    FileRead* hiloPedidos = new FileRead(clientes, articulos, colaPed, &mutexPedidos);
-    hiloPedidos->start();
+//    colaPedidos* colaPed = new colaPedidos(clientes);
 
-    //Las colas de las fabricas
-    colaFabricas colaA;
-    colaFabricas colaB;
-    colaFabricas colaC;
-    colaFabricas colaCom;
+//    //Se leen los pedidos
+//    FileRead* hiloPedidos = new FileRead(clientes, articulos, colaPed, &mutexPedidos);
+//    hiloPedidos->start();
 
-    Balanceador* hiloBalanceador = new Balanceador(colaA, colaB, colaC, colaCom, articulos, colaPed, &mutexPedidos);
-    hiloBalanceador->start();
+//    //Las colas de las fabricas
+//    colaFabricas colaA;
+//    colaFabricas colaB;
+//    colaFabricas colaC;
+//    colaFabricas colaCom;
 
-    QApplication a(argc, argv);
-   Proyecto_ED w;
-    w.show();
+//    Balanceador* hiloBalanceador = new Balanceador(colaA, colaB, colaC, colaCom, articulos, colaPed, &mutexPedidos);
+//    hiloBalanceador->start();
 
-    // Para probar lo que hay de alistadores:
 
-//    alistadores.asignar_pedido(1,"A01");
+//    // Para probar lo que hay de alistadores:
+
+//    Alistadores alistadores;
+
+//    alistadores.asignar_pedido(1,"X01");
 //    alistadores.asignar_pedido(2,"B01");
 //    alistadores.asignar_pedido(3,"C01");
 //    alistadores.asignar_pedido(4,"D01");
@@ -63,7 +70,6 @@ int main(int argc, char *argv[])
 
 
 
-
-    return a.exec();
+    return app.exec();
 
 }

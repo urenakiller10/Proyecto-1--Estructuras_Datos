@@ -3,3 +3,5 @@
 003	Celx	6
 004	Teky	5
 005	Sew	4
+006	Pep	2
+007	Juan 	1

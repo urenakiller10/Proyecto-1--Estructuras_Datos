@@ -37,6 +37,11 @@ private slots:
 
     void on_B_Alistadores_clicked();
 
+    void on_B_Clientes_clicked();
+
+    void on_B_articulos_clicked();
+
+
 private:
     Ui::Proyecto_ED *ui;
 };

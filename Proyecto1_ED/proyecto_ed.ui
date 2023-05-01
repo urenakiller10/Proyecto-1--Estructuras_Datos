@@ -1182,7 +1182,7 @@ color: rgb(0, 0, 0);</string>
       <rect>
        <x>300</x>
        <y>0</y>
-       <width>241</width>
+       <width>291</width>
        <height>51</height>
       </rect>
      </property>
@@ -1484,9 +1484,9 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>110</y>
+       <y>40</y>
        <width>20</width>
-       <height>151</height>
+       <height>221</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1947,6 +1947,52 @@ color: rgb(0, 0, 0);</string>
       <enum>Qt::Vertical</enum>
      </property>
     </widget>
+    <widget class="QPushButton" name="B_Clientes">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>350</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(85, 255, 255);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Lectura clientes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="B_articulos">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>10</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(85, 255, 255);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Carga de artículos</string>
+     </property>
+    </widget>
     <zorder>line_33</zorder>
     <zorder>line_32</zorder>
     <zorder>line_31</zorder>
@@ -1994,6 +2040,8 @@ color: rgb(0, 0, 0);</string>
     <zorder>B_Balanceador</zorder>
     <zorder>B_Alistadores</zorder>
     <zorder>line_10</zorder>
+    <zorder>B_Clientes</zorder>
+    <zorder>B_articulos</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -2002,7 +2050,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

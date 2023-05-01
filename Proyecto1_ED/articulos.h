@@ -2,6 +2,8 @@
 #include "auxiliaries.h"
 #ifndef ARTICULOS_H
 #define ARTICULOS_H
+#include<iostream>
+#include <string>
 
 //Esta wea se va a encargar de mantener la bodega
 
@@ -29,7 +31,7 @@ struct Articulo{
     }
 
     void imprimir(){
-        cout << "Code:" <<codigo <<" Cant:" <<existencias << " Seg:" << segundosFabricacion << " Ubi:"<<ubicacion <<endl;
+        cout << "Codigo:" <<codigo <<"/"<<" Cantidad:" <<existencias<<"/"<< " Segundos:" << segundosFabricacion <<"/"<< " Ubicacion:"<<ubicacion <<endl;
     }
 
     int getExistencias(){
@@ -77,6 +79,16 @@ struct listaDoble{
             tmp->siguiente = nuevo;
             nuevo->anterior = tmp;
             ultimoNodo = tmp;
+        }
+    }
+
+    //Método para imprimir la lista doble
+
+    void imprimirLista(){
+        Articulo* actual = primerNodo;
+        while(actual != NULL){
+            actual->imprimir();
+            actual = actual->siguiente;
         }
     }
 

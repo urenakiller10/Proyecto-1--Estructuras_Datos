@@ -56,7 +56,8 @@ public:
                 cout << "Alistador numero " << id << " completa el pedido numero " << pedido_asignado << endl;
                 completar_pedido();
             } else {
-                cout << "Alistador numero " << id << " esta ocupado con el pedido numero " << pedido_asignado << endl;
+                //cout << "Alistador numero " << id << " esta ocupado con el pedido numero " << pedido_asignado << endl;
+                cout <<"papa"<<endl;
             }
         }
     }
@@ -94,12 +95,12 @@ public:
                 }
             }
             if (alistador->tiempo_restante > 0) {
-                cout << "3Alistador numero " << alistador->id << " esta ocupado con el pedido numero " << alistador->pedido_asignado << endl;
+                cout << "Alistador numero " << alistador->id << " esta ocupado con el pedido numero " << alistador->pedido_asignado << endl;
                 this_thread::sleep_for(chrono::seconds(1));
                 alistador->tiempo_restante--;
             } else {
-                cout << "4Alistador numero " << alistador->id << " completó el pedido numero " << alistador->pedido_asignado << endl;
-                                                                                                                                    alistador->completar_pedido();
+                cout << "Alistador numero " << alistador->id << " completa el pedido numero " << alistador->pedido_asignado << endl;
+                alistador->completar_pedido();
                 // revisar si hay pedidos pendientes en la cola
                 if (!pedidos.empty()) {
                     alistador->asignar_pedido(pedidos.front(),"A01");
@@ -111,7 +112,6 @@ public:
             }
         }
     }
-
     //se le asigna un pedido al primer alistador que haya libre
 
     void asignar_pedido(int pedido, string ubicacion) {
@@ -127,7 +127,7 @@ public:
         // si no hay alistadores libres, poner el pedido en la cola
         if (alistador_libre == nullptr) {
             cout << "No hay alistadores disponibles en este momento. El pedido " << pedido << " se pondrá en cola." << endl;
-                                                                                                                           pedidos.push(pedido);
+            pedidos.push(pedido);
             return;
         }
 
