@@ -44,28 +44,47 @@ public:
     }
 
     void run() override{
-        //cout << "Llego al hilo del balanceador de alguna forma";
+        string codProd = "";
+        int cantidad = 0;
         while(true){
-
             mutex->lock();
             if(!colaPed->isEmpty()){
                 cout << "Hay un pedido por atender"<<endl;
-                pedido nuevoPedido = colaPed->dequeue();
-                cout << nuevoPedido.toString() <<endl;
+                pedido* nuevoPedido = colaPed->dequeue();
+                listaPares* listaActual = nuevoPedido->lista;
+                cout << nuevoPedido->toString() <<endl;
                 mutex->unlock();
-                listaPares* listaActual =nuevoPedido.lista;
+
                 QThread::sleep(1); //Que dure un segundo en procesar el nuevo pedido
 
-                parOrdenado* par = listaActual->primero;
-                while(par->sig != NULL){
-                    string codProd = par->codigoProducto;
-                }
-
+                procesar(nuevoPedido);
             }
             else{
                 mutex->unlock();
             }
             QThread::sleep(1);
+        }
+    }
+
+    void procesar(pedido* _pedido){
+        cout << "Funcion procesar" <<endl;
+        listaPares* lista = _pedido->lista;
+        parOrdenado* tmp = lista->primero;
+        while(tmp->sig != NULL){
+            //cout << tmp->toString() <<endl;
+            evaluar(tmp);
+            tmp = tmp->sig;
+        }
+        //cout << tmp->toString() <<endl;
+        evaluar(tmp);
+    }
+
+    void evaluar(parOrdenado* par){
+        if(productos.suficiente(par->codigoProducto, par->cantidad)){
+            cout << "Sufientes de " << par->codigoProducto << endl;
+        }
+        else{
+            cout << "Insufientes de " << par->codigoProducto << " se va a fabrica"<<endl;
         }
     }
 

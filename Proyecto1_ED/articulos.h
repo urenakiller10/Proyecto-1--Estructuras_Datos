@@ -184,7 +184,7 @@ struct listaDoble{
     }
 
     void cargar(){
-        cout << "Se intenta leer articulos" << endl;
+        //cout << "Se intenta leer articulos" << endl;
         ifstream archivo("../Articulos.txt");
         if (!archivo.is_open()) {
             cerr << "No se pudo abrir el archivo Articulos.txt" << endl;

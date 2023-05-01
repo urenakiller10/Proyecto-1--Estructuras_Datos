@@ -35,14 +35,14 @@ public:
 
     void run() override{
         //En este punto puedo tirar lo que sea una sola vez xd
-        cout << "Arranca el hilo de lectura de pedidos" << endl;
+        //cout << "Arranca el hilo de lectura de pedidos" << endl;
         filesystem::path directoryPath("../pedidos");
         listaProcesados* listaProc = new listaProcesados;
         int contadorLineas = 0; //Declaracion y un valor para evitar faults
         int numPedido = 0;
         int numCliente;
         while (true){
-            cout << "Leyendo pedidos" <<endl;
+            //cout << "Leyendo pedidos" <<endl;
             for(const auto& entry : filesystem::directory_iterator(directoryPath)) {
                 if(entry.is_regular_file()){
 
@@ -52,7 +52,7 @@ public:
 
                     contadorLineas = 0; //Se reinicia el counter por cada archivo
                     if(!listaProc->procesado(rutaActual)){ //Si el archivo no se ha procesado, haga
-                        cout << "Leyendo: " << rutaActual << endl;
+                        //cout << "Leyendo: " << rutaActual << endl;
                         //cout << "Nombre archivo: " << getFileName(rutaActual) <<endl;
 
                         if(file.is_open()){
@@ -172,16 +172,12 @@ public:
                             nodoArc* nodoProc = new nodoArc(r); //La ruta del archivo
                             listaProc->insertar(nodoProc);
                             //Aqui armar el pedido con toda la data
-                            cout << "Se va a crear el pedido" << endl;
+                            //cout << "Se va a crear el pedido" << endl;
 
                             mutex->lock();
                             pedido* nuevo = new pedido(numPedido, numCliente, lista);
-                            colaPed->enqueue(*(nuevo));
+                            colaPed->enqueue(nuevo);
                             mutex->unlock();
-
-                            if(colaPed->isEmpty()){
-                                cout << "Cola pedidos vacia 1" << endl;
-                            } else {cout << "Cola pedidos no vacia 1" << endl;}
                         }
                     }
                 }

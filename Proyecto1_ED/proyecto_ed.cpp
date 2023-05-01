@@ -1,9 +1,6 @@
 #include "includes.h"
-#include "CargarClientesMemoria.h"
-#include "articulos.h"
-#include<iostream>
-#include <string>
-#include "auxiliaries.h"
+#include "pedidos.h"
+
 
 Proyecto_ED::Proyecto_ED(QWidget *parent)
     : QMainWindow(parent)
@@ -78,26 +75,5 @@ void Proyecto_ED::on_B_ColaFacturacion_clicked()
 void Proyecto_ED::on_B_Alistadores_clicked()
 {
     qDebug() << "Muestra la cola de los alistadores";
-}
-
-
-void Proyecto_ED::on_B_Clientes_clicked()
-{
-    listaSimple lista;
-    lista.LeerClientes();
-    Cliente* tmp = lista.primerCliente;
-    while(tmp != NULL){
-        tmp->imprimir();
-        tmp = tmp->siguiente;
-}
-
-}
-
-
-void Proyecto_ED::on_B_articulos_clicked()
-{
-    listaDoble articulos;
-    articulos.cargar();
-    articulos.imprimirLista();
 }
 

@@ -2,6 +2,7 @@
 #define PROYECTO_ED_H
 
 #include "includes.h"
+#include "colaPedidos.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Proyecto_ED; }
@@ -44,6 +45,7 @@ private slots:
 
 private:
     Ui::Proyecto_ED *ui;
+    colaPedidos* colaP;
 };
 
 #endif // PROYECTO_ED_H
