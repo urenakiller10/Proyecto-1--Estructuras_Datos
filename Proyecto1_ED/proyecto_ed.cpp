@@ -3,7 +3,7 @@
 #include "articulos.h"
 #include "HiloPedidos.h"
 #include "QMutex"
-#include <QMessageBox>
+
 
 
 
@@ -12,15 +12,12 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
     , ui(new Ui::Proyecto_ED)
 {
     ui->setupUi(this);
+
     //Leer los clientes y subirlos a memoria
-
     clientes.LeerClientes();
-
-
 
     //Leer los articulos y subirlos a memoria
     articulos.cargar();
-
 
 
     colaP = new colaPedidos();
@@ -33,19 +30,6 @@ Proyecto_ED::~Proyecto_ED()
 {
     delete ui;
 }
-
-void Proyecto_ED::error(){
-    QMessageBox msgBox;
-    msgBox.setText("Error en uno de los pedidos");
-    msgBox.setIcon(QMessageBox::Critical);
-    msgBox.addButton(QMessageBox::Ok);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-
-    //QObject::connect(&msgBox, &QMessageBox::buttonClicked, this ,&QWidget::close);
-    QObject::connect(&msgBox, SIGNAL(buttonClicked()), this, SLOT(close()));
-    msgBox.exec();
-}
-
 //BOTONES DE LAS COLAS
 
 //----------------------------------------------------ColaPedidos-------------------------------------------------------
@@ -53,7 +37,6 @@ void Proyecto_ED::on_B_ColaPedidos_clicked()
 
 {
     //Leer los pedidos
-
     colaP->print();
 }
 
