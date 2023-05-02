@@ -1,0 +1,15 @@
+1
+003
+A01	12
+C01	
+A01	12
+C01	12
+05/01/23 19:13:17 La cantidad del producto no es entero
+05/01/23 19:13:22 La cantidad del producto no es entero
+05/01/23 19:14:12 La cantidad del producto no es entero
+05/01/23 19:14:17 La cantidad del producto no es entero
+05/01/23 19:14:48 La cantidad del producto no es entero
+05/01/23 19:14:53 La cantidad del producto no es entero
+05/01/23 19:18:37 La cantidad del producto no es entero
+05/01/23 19:18:42 La cantidad del producto no es entero
+05/01/23 19:40:27 La cantidad del producto no es entero

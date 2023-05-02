@@ -33,6 +33,10 @@ int main(int argc, char *argv[])
 
     msgBox.exec();
 
+    colaFacturacion miCola;
+
+    miCola.generarFacturas();
+
 
 
 
