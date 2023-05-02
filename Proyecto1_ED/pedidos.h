@@ -23,6 +23,11 @@ struct pedido{
         return r;
     }
 
+    void imprimir(){
+        cout << "ID pedido: " << to_string(id) << "Codigo cliente: " << to_string(codCliente) <<endl;
+
+    }
+
 };
 
 
@@ -38,9 +43,8 @@ struct parOrdenado{
         cantidad = _cantidad;
     }
 
-    string toString(){
-        string result = "Articulo: " + codigoProducto + " Cantidad: " + to_string(cantidad);
-        return result;
+    void imprimir(){
+        cout << "Articulo: " << codigoProducto << " Cantidad: " << to_string(cantidad)<< endl;
     }
 
 };
@@ -65,6 +69,15 @@ struct listaPares{
                 tmp = tmp->sig;
             }
             tmp->sig = par;
+        }
+    }
+    void imprimir(){
+        if(primero!=NULL){
+            parOrdenado* tmp = primero;
+            while(tmp!=NULL){
+                tmp->imprimir();
+                tmp = tmp->sig;
+            }
         }
     }
 };
