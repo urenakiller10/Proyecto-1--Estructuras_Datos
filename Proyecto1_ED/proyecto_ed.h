@@ -4,8 +4,6 @@
 #include <filesystem> // para trabajar con archivos y directorios
 #include <fstream> // para leer y escribir archivos
 #include <string> // para trabajar con cadenas de texto
-
-#include "includes.h"
 #include "colaPedidos.h"
 #include "pedidos.h"
 #include "articulos.h"
