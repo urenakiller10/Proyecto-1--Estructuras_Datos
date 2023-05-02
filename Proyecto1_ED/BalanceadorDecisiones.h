@@ -86,14 +86,24 @@ public:
         else{
             cout << "Insufientes de " << par->codigoProducto << " se va a fabrica"<<endl;
             if(productos.getCategoria(par->codigoProducto) == "A"){
+                if(colaFabricaA.size() < colaFabricaComodin.size()){
                 cout << "Se va a la cola A" <<endl;
-                colaFabricaA.enqueue(par);
+                    colaFabricaA.enqueue(par);
+                }
             }
             if (productos.getCategoria(par->codigoProducto) == "A"){
+                if(colaFabricaB.size() < colaFabricaComodin.size()){
                     cout << "Se va a la cola B" <<endl;
+                    colaFabricaB.enqueue(par);
+                }
             }
             if (productos.getCategoria(par->codigoProducto) == "C"){
                     cout << "Se va a la cola C" <<endl;
+                colaFabricaC.enqueue(par);
+            }
+            else{
+                cout << "Se va a la fabrica comodin" <<endl;
+                colaFabricaComodin.enqueue(par);
             }
         }
     }
