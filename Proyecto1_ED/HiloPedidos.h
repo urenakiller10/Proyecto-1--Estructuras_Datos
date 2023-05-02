@@ -10,6 +10,7 @@
 #include "auxiliaries.h"
 #include "pedidos.h"
 #include "QMutex"
+#include "timeStamp.cpp"
 
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
@@ -69,7 +70,7 @@ public:
                                         //Meta lo que ocupa al archivo
                                         file.close();
                                         ofstream archivoMalo(entry.path(),ofstream::app);
-                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de pedido no es un valor entero";
+                                        archivoMalo << "\n" <<" " <<"El numero de pedido no es un valor entero";
                                         //Cierre el archivo
                                         archivoMalo.close();
                                         //Invoque a mover
@@ -89,7 +90,7 @@ public:
                                             //Error de no existe
                                             file.close();
                                             ofstream archivoMalo(entry.path(),ofstream::app);
-                                            archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de cliente no existe";
+                                            archivoMalo << "\n" << " " <<"El numero de cliente no existe";
                                             //Cierre el archivo
                                             archivoMalo.close();
                                             //Invoque a mover
@@ -104,7 +105,7 @@ public:
                                         //Error de codigo
                                         file.close();
                                         ofstream archivoMalo(entry.path(),ofstream::app);
-                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El numero de cliente no es un entero";
+                                        archivoMalo << "\n" << " " <<"El numero de cliente no es un entero";
                                         //Cierre el archivo
                                         archivoMalo.close();
                                         //Invoque a mover
@@ -129,7 +130,7 @@ public:
                                         cout << "Mae la vara no existe" <<endl;
                                         file.close();
                                         ofstream archivoMalo(entry.path(),ofstream::app);
-                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"El codigo de producto "<< codigoP << " no existe";
+                                        archivoMalo << "\n" << " " <<"El codigo de producto "<< codigoP << " no existe";
                                         //Cierre el archivo
                                         archivoMalo.close();
                                         //Invoque a mover
@@ -142,7 +143,7 @@ public:
                                         cout << "Mae no mando un entero de cantidad" <<endl;
                                         file.close();
                                         ofstream archivoMalo(entry.path(),ofstream::app);
-                                        archivoMalo << "\n" << getTimeDate(false) << " " <<"La cantidad del producto no es entero";
+                                        archivoMalo << "\n" << " " <<"La cantidad del producto no es entero";
                                         //Cierre el archivo
                                         archivoMalo.close();
                                         //Invoque a mover
@@ -154,7 +155,7 @@ public:
                                             cout << "Valor negativo" <<endl;
                                             file.close();
                                             ofstream archivoMalo(entry.path(),ofstream::app);
-                                            archivoMalo << "\n" << getTimeDate(false) << " " <<"La cantidad del producto es negativa";
+                                            archivoMalo << "\n"<< " " <<"La cantidad del producto es negativa";
                                             //Cierre el archivo
                                             archivoMalo.close();
                                             //Invoque a mover

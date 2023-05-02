@@ -1,7 +1,7 @@
 #include "includes.h"
 #ifndef TIMESTAMP_H
 #define TIMESTAMP_H
-string getTimeDate(bool archive){
+string getTimeDate(){
 
     int tamanno = 80;
     char buffer [tamanno] = {0}; //Este array se puede reducir en daño, pero para evitar petadas no moverle
