@@ -9,6 +9,8 @@
 #include "articulos.h"
 #include "QMutex"
 #include "includes.h"
+#include "BalanceadorDecisiones.h"
+#include "ColaFabricas.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Proyecto_ED; }
@@ -25,8 +27,12 @@ public:
 
     listaSimple clientes;
     listaDoble articulos;
-
     QMutex mutexPedidos;
+
+
+
+
+
 
 private slots:
     void on_B_FabricaComodin_clicked();

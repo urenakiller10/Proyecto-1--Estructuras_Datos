@@ -2,6 +2,7 @@
 #include "pedidos.h"
 #include "articulos.h"
 #include "HiloPedidos.h"
+#include "BalanceadorDecisiones.h"
 #include "QMutex"
 
 
@@ -23,6 +24,17 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
     colaP = new colaPedidos();
     FileRead* hiloPedidos = new FileRead(clientes, articulos, colaP, &mutexPedidos);
     hiloPedidos->start();
+
+    colaFabricas colaA;
+    colaFabricas colaB;
+    colaFabricas colaC;
+    colaFabricas colaX;
+
+    QMutex mutexP;
+
+    Balanceador* bl = new Balanceador(colaA, colaB, colaC, colaX, articulos, colaP, &mutexP);
+    bl->start();
+
 
 }
 

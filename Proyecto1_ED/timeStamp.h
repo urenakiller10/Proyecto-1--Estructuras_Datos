@@ -2,7 +2,7 @@
 #ifndef TIMESTAMP_H
 #define TIMESTAMP_H
 
-string getTimeDate(bool archive);
+string getTimeDate();
 
 #endif
 
