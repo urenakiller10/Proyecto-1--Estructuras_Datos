@@ -12,12 +12,12 @@ struct colaFabricas{
 
 public:
 
-    void enqueue(parOrdenado value)
+    void enqueue(parOrdenado* value)
     {
         cola.append(value);
     }
 
-    parOrdenado dequeue()
+    parOrdenado* dequeue()
     {
         Q_ASSERT(!cola.isEmpty());
         return cola.takeFirst();
@@ -37,7 +37,7 @@ public:
     {
         qDebug() << "Queue size:" << size();
         qDebug() << "Queue contents:";
-        for (parOrdenado value : cola) {
+        for (parOrdenado* value : cola) {
 //            value.imprimir();
         }
 
@@ -50,8 +50,8 @@ public:
             if (i < cola.size() - 1) {
                 result.append('-');
             }
-            parOrdenado actual = cola.at(i);
-            result.append(actual.toString());
+            parOrdenado* actual= cola.at(i);
+            result.append(actual->toString());
 
         }
         return result;
@@ -59,7 +59,7 @@ public:
 
 
 private:
-    QList<parOrdenado> cola;
+    QList<parOrdenado*> cola;
 };
 
 #endif // COLAFABRICAS_H
