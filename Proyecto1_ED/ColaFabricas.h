@@ -38,11 +38,11 @@ public:
         qDebug() << "Queue size:" << size();
         qDebug() << "Queue contents:";
         for (parOrdenado value : cola) {
-            value.imprimir();
+//            value.imprimir();
         }
 
     }
-/*
+
     QString _toString()
     {
         QString result;
@@ -56,7 +56,7 @@ public:
         }
         return result;
     }
-*/
+
 
 private:
     QList<parOrdenado> cola;
