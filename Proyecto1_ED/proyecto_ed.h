@@ -8,6 +8,7 @@
 #include "pedidos.h"
 #include "articulos.h"
 #include "QMutex"
+#include "includes.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Proyecto_ED; }

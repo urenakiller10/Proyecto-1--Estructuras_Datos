@@ -6,4 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <regex>
+#include "./ui_proyecto_ed.h"
+#include "proyecto_ed.h"
 using namespace std;

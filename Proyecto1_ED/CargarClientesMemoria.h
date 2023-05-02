@@ -78,45 +78,39 @@ struct listaSimple{
 
         while(tmp!=NULL){
             if (contador == pos){
-<<<<<<< HEAD
+
                 return tmp->nombre;
-=======
+
                 return to_string(tmp->codigo);
->>>>>>> 9dcad8ea3e0fed58491930147786f5795e5c9f69
+
             }
             contador += 1;
             tmp = tmp->siguiente;
         }
-<<<<<<< HEAD
+
         return "Generic";
     }
-    string getPrioridad(int pos){
-=======
-        return "666";
-    }
 
-    string getPrio(int pos){
->>>>>>> 9dcad8ea3e0fed58491930147786f5795e5c9f69
+    string getPrioridad(int pos){
         Cliente* tmp = primerCliente;
         int contador = 0;
 
         while(tmp!=NULL){
             if (contador == pos){
-<<<<<<< HEAD
+
                 return tmp->nombre;
-=======
-                return to_string(tmp->prioridad);
->>>>>>> 9dcad8ea3e0fed58491930147786f5795e5c9f69
+
+                return to_string(tmp->codigo);
+
             }
             contador += 1;
             tmp = tmp->siguiente;
         }
-<<<<<<< HEAD
+
         return "Generic";
-=======
-        return "777";
->>>>>>> 9dcad8ea3e0fed58491930147786f5795e5c9f69
     }
+
+
 
     void imprimir(){
         if(largo() == 0){

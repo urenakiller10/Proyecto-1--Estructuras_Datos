@@ -1,7 +1,6 @@
 
 #ifndef COLAFACTURACION_H
 #define COLAFACTURACION_H
-
 #include <fstream>
 #include <queue>
 #include <string>
@@ -12,8 +11,8 @@
 class colaFacturacion {
 public:
 
-    listaSimple* clientes =new listaSimple();
-    clientes->leerClientes();
+//    listaSimple* clientes =new listaSimple();
+//    clientes->leerClientes();
 
     void generarFacturas() {
         QDir::setCurrent(QCoreApplication::applicationDirPath());
@@ -29,7 +28,7 @@ public:
             // Crear el archivo de texto y escribir el contenido
             std::ofstream archivo(nombreArchivo);
             archivo << "Pedido: " << numFactura << std::endl;
-            archivo << "Cliente: "<<clientes->getName(0) << std::endl;
+            archivo << "Cliente: "<< std::endl;
             archivo << "----------------------------------------------------------------" << std::endl;
             archivo << "En cola: " << std::endl;
             archivo << "Balanceador: " << std::endl;
