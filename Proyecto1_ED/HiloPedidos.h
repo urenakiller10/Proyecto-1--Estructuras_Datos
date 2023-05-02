@@ -58,7 +58,7 @@ public:
                         if(file.is_open()){
                             string line;
                             listaPares* lista = new listaPares();
-                            std::cout<<"contenido de"<<entry.path().filename()<<":"<<std::endl;
+                            //std::cout<<"contenido de"<<entry.path().filename()<<":"<<std::endl;
 
                             while(getline(file, line)){
 
@@ -178,12 +178,12 @@ public:
                             //cout << "Se va a crear el pedido" << endl;
 
                             //Esto es para imprimir por mientras xd
-
+                            /*
                             file.clear();
                             file.seekg(1);
                             while (getline(file, line)) {
                             cout << line << endl;
-                            }
+                            }*/
 
                             mutex->lock();
                             pedido* nuevo = new pedido(numPedido, numCliente, lista);

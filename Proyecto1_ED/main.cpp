@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     w.show();
 
     //Ventana de error de pedidos, el text se cambia por lo que uno quiera. Lo otro es para que cuando se le dé "OK" se cierre todo
-
+/*
     QMessageBox msgBox;
     msgBox.setText("Error en uno de los pedidos");
     msgBox.setIcon(QMessageBox::Critical);
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(&msgBox, &QMessageBox::buttonClicked, &w, &QWidget::close);
 
-    msgBox.exec();
+    msgBox.exec();*/
 
     colaFacturacion miCola;
 
