@@ -64,6 +64,7 @@ struct listaSimple{
 
         while(tmp!=NULL){
             if (contador == pos){
+
                 return tmp->nombre;
             }
             contador += 1;
@@ -78,8 +79,6 @@ struct listaSimple{
 
         while(tmp!=NULL){
             if (contador == pos){
-
-                return tmp->nombre;
 
                 return to_string(tmp->codigo);
 
@@ -98,9 +97,7 @@ struct listaSimple{
         while(tmp!=NULL){
             if (contador == pos){
 
-                return tmp->nombre;
-
-                return to_string(tmp->codigo);
+                return to_string(tmp->prioridad);
 
             }
             contador += 1;
