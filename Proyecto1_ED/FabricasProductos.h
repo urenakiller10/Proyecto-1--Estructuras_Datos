@@ -14,7 +14,7 @@ using namespace std;
 class Fabrica : public QThread
 {
 public:
-    Fabrica(colaFabricas<Articulo> queue){
+    Fabrica(colaFabricas<parOrdenado*> queue){
         this->queue = queue;
         running = true;
     }
@@ -47,7 +47,7 @@ public:
 private:
     int delay;
     bool running;
-    colaFabricas<Articulo> queue;
+    colaFabricas<parOrdenado*> queue;
 };
 
 
