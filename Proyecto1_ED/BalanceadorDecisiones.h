@@ -85,6 +85,15 @@ public:
         }
         else{
             cout << "Insufientes de " << par->codigoProducto << " se va a fabrica"<<endl;
+            if(productos.getCategoria(par->codigoProducto) == "A"){
+                cout << "Se va a la cola A" <<endl;
+            }
+            if (productos.getCategoria(par->codigoProducto) == "A"){
+                    cout << "Se va a la cola B" <<endl;
+            }
+            if (productos.getCategoria(par->codigoProducto) == "C"){
+                    cout << "Se va a la cola C" <<endl;
+            }
         }
     }
 
