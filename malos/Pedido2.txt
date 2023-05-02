@@ -1,8 +1,0 @@
-1
-001
-A01	10
-A03	-1
-B09	12
-B00	x
-04-29-23 18_48_39 La cantidad del producto es negativa
-04-29-23 18_50_42 La cantidad del producto es negativa

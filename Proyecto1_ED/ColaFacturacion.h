@@ -9,17 +9,12 @@
 
 class colaFacturacion {
 public:
-    colaFacturacion() {
-        // Inicializar la cola con tres pedidos
-        pedidos.push("Pedido1");
-        pedidos.push("Pedido2");
-        pedidos.push("Pedido3");
-    }
+
 
     void generarFacturas() {
         QDir::setCurrent(QCoreApplication::applicationDirPath());
         int numFactura = 1;
-        while (!pedidos.empty()) {
+        while (!pedidos.empty() && numFactura <= 4 ) {
             // Obtener el siguiente pedido de la cola
             std::string pedido = pedidos.front();
             pedidos.pop();
@@ -55,8 +50,20 @@ public:
         }
     }
 
+    colaFacturacion() {
+        // Inicializar la cola con tres pedidos
+        pedidos.push("Pedido1");
+        pedidos.push("Pedido2");
+        pedidos.push("Pedido3");
+        pedidos.push("Pedido4");
+    }
+
 private:
     std::queue<std::string> pedidos;
+
+
+
+
 };
 
 

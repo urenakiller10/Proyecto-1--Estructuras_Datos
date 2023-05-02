@@ -1,7 +1,0 @@
-1
-001
-A01	10
-A03	10
-B09	12
-B00	2
-04-29-23 18_50_42 El numero de producto no existe
