@@ -105,12 +105,12 @@ struct listaSimple{
         return 1;
     }
 
-    void LeerClientes(){
+    bool LeerClientes(){
         //cout << "Se intenta leer clientes" <<endl;
         ifstream archivo("../Clientes.txt");
         if(!archivo){
             cout << "No se pudo abrir clientes";
-            return;
+            return false;
         }
 
         string linea;
@@ -127,9 +127,10 @@ struct listaSimple{
             //Hay que verificar las cosas del stoi antes, que si no croma esta mierda
             Cliente* nuevo = new Cliente(stoi(codigo), nombre, stoi(prio));
             insertar(nuevo);
-        }
-    }
 
+        }
+    return true;
+    }
 };
 
 

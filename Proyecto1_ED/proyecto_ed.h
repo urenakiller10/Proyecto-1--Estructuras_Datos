@@ -54,6 +54,9 @@ private slots:
 
     void on_B_articulos_clicked();
 
+    void error();
+
+
 
 private:
     Ui::Proyecto_ED *ui;
