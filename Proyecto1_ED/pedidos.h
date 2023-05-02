@@ -43,9 +43,8 @@ struct parOrdenado{
         cantidad = _cantidad;
     }
 
-    string toString(){
-        string result = "Articulo: " + codigoProducto + " Cantidad: " + to_string(cantidad);
-        return result;
+    void imprimir(){
+        cout << "Articulo: " << codigoProducto << " Cantidad: " << to_string(cantidad)<< endl;
     }
 
 };
@@ -76,7 +75,7 @@ struct listaPares{
         if(primero!=NULL){
             parOrdenado* tmp = primero;
             while(tmp!=NULL){
-                cout << tmp->toString() <<endl;
+                tmp->imprimir();
                 tmp = tmp->sig;
             }
         }
