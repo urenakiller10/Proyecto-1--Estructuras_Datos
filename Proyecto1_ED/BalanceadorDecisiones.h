@@ -81,7 +81,7 @@ public:
 
     void evaluar(parOrdenado* par){
         if(productos.suficiente(par->codigoProducto, par->cantidad)){
-            cout << "Sufientes de " << par->codigoProducto << endl;
+            cout << "Suficientes de " << par->codigoProducto << endl;
         }
         else{
             cout << "Insufientes de " << par->codigoProducto << " se va a fabrica"<<endl;
