@@ -37,6 +37,13 @@ int main(int argc, char *argv[])
 
     miCola.generarFacturas();
 
+//    Alistadores alistadores;
+//    alistadores.asignar_pedido(1, "A01");
+//    alistadores.asignar_pedido(2, "A03");
+//    alistadores.asignar_pedido(3, "A02");
+
+//    alistadores.revisar_cola();
+//    alistadores.esperar_trabajo_terminado();
 
 
 

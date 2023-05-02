@@ -33,6 +33,8 @@ set(PROJECT_SOURCES
         colaPedidos.h
         pedidos.h
         alistadores.h
+        GenerarFacturasThread.h
+        AsignarPedidoThread.h
 
 )
 
