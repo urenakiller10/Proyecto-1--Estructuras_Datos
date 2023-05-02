@@ -38,6 +38,36 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
 
 }
 
+struct Pedido {
+    QString articulo;
+    int cantidad;
+    QString fabrica;
+};
+void imprimirPedidos()
+{
+    // Configurar el Pedido 1
+    Pedido pedido1;
+    pedido1.fabrica = "B";
+    pedido1.articulo = "C01";
+    pedido1.cantidad = 22;
+
+    // Configurar el Pedido 2
+    Pedido pedido2;
+    pedido2.fabrica = "C";
+    pedido2.articulo = "A03";
+    pedido2.cantidad = 11;
+
+    // Imprimir Pedido 1
+    qDebug() << "Pedido 1: Fabrica " << pedido1.fabrica << " haciendo " << pedido1.cantidad << " productos de " << pedido1.articulo;
+    QThread::sleep(9); //
+
+    // Imprimir Pedido 2
+    qDebug() << "Pedido 2: Fabrica " << pedido2.fabrica << " haciendo " << pedido2.cantidad << " productos de " << pedido2.articulo;
+    QThread::sleep(40); //
+    // Imprimir Pedido 3
+    qDebug() << "Pedido 3: Listo";
+}
+
 Proyecto_ED::~Proyecto_ED()
 {
     delete ui;
@@ -56,6 +86,12 @@ void Proyecto_ED::on_B_ColaPedidos_clicked()
 void Proyecto_ED::on_B_Balanceador_clicked()
 {
     qDebug() << "Muestra la cola del Balanceador";
+
+    QThread* hiloPedidos = new QThread();
+    QObject::connect(hiloPedidos, &QThread::started, this, imprimirPedidos);
+    hiloPedidos->start();
+
+
 }
 
 // *******Decide si va a cola de alisto o a las fabrica:****

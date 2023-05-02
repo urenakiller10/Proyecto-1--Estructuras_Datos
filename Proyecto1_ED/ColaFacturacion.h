@@ -43,12 +43,6 @@ public:
             archivo << "A empaque: " << std::endl;
             archivo << "Finalizado: " << std::endl;
             archivo << "----------------------------------------------------------------" << std::endl;
-            archivo << "FABRICA" << std::endl;
-            archivo << "Articulo: " << std::endl;
-            archivo << "Cantidad: " << std::endl;
-            archivo << "Inicio: " << std::endl;
-            archivo << "Final: " << std::endl;
-            archivo << "--------------------------------------------------------------" << std::endl;
             archivo << "ALISTO" << std::endl;
             archivo << "Alistador:" <<numAlistador<< std::endl;
             archivo << "Codigo articulo: / Ubicación: / Tiempo" << std::endl;
