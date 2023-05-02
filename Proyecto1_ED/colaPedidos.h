@@ -48,7 +48,6 @@ public:
         for (pedido* value : cola) {
             //cola.insert(0,value);
             value->imprimir();
-            value->lista->imprimir();
         }
 
     }
