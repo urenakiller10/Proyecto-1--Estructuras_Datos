@@ -11,8 +11,7 @@
 class colaFacturacion {
 public:
 
-//    listaSimple* clientes =new listaSimple();
-//    clientes->leerClientes();
+
 
     void generarFacturas() {
         QDir::setCurrent(QCoreApplication::applicationDirPath());
@@ -59,11 +58,12 @@ public:
         pedidos.push("Pedido2");
         pedidos.push("Pedido3");
         pedidos.push("Pedido4");
+        cl->LeerClientes();
     }
 
 private:
     std::queue<std::string> pedidos;
-
+    listaSimple* cl;
 
 
 
