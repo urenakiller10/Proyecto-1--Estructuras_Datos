@@ -72,6 +72,34 @@ struct listaSimple{
         return "Generic";
     }
 
+    string getId(int pos){
+        Cliente* tmp = primerCliente;
+        int contador = 0;
+
+        while(tmp!=NULL){
+            if (contador == pos){
+                return to_string(tmp->codigo);
+            }
+            contador += 1;
+            tmp = tmp->siguiente;
+        }
+        return "666";
+    }
+
+    string getPrio(int pos){
+        Cliente* tmp = primerCliente;
+        int contador = 0;
+
+        while(tmp!=NULL){
+            if (contador == pos){
+                return to_string(tmp->prioridad);
+            }
+            contador += 1;
+            tmp = tmp->siguiente;
+        }
+        return "777";
+    }
+
     void imprimir(){
         if(largo() == 0){
             return;
