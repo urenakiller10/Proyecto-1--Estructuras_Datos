@@ -58,7 +58,7 @@ public:
                         if(file.is_open()){
                             string line;
                             listaPares* lista = new listaPares();
-                            std::cout<<"contenido de"<<entry.path().filename()<<":"<<std::endl;
+                            //std::cout<<"contenido de"<<entry.path().filename()<<":"<<std::endl;
 
                             while(getline(file, line)){
 

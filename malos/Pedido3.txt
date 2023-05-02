@@ -1,0 +1,12 @@
+9
+003
+A01	12	
+C01	12
+A01	12
+C01	12
+a
+05/01/23 19:28:57 El codigo de producto a no existe
+05/01/23 19:31:35 El codigo de producto a no existe
+05/01/23 19:32:16 El codigo de producto a no existe
+05/01/23 19:34:10 El codigo de producto a no existe
+05/01/23 19:35:07 El codigo de producto a no existe
