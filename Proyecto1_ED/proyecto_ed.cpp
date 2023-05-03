@@ -4,6 +4,7 @@
 #include "HiloPedidos.h"
 #include "BalanceadorDecisiones.h"
 #include "QMutex"
+#include "Alistadores.h"
 
 
 
@@ -30,6 +31,9 @@ Proyecto_ED::Proyecto_ED(QWidget *parent)
     colaFabricas colaC;
     colaFabricas colaX;
 
+
+
+
     QMutex mutexP;
 
     Balanceador* bl = new Balanceador(colaA, colaB, colaC, colaX, articulos, colaP, &mutexP);
@@ -42,30 +46,42 @@ struct Pedido {
     QString articulo;
     int cantidad;
     QString fabrica;
+
 };
 void imprimirPedidos()
 {
-    // Configurar el Pedido 1
+    //Pedido 1 genérico
     Pedido pedido1;
     pedido1.fabrica = "B";
     pedido1.articulo = "C01";
     pedido1.cantidad = 22;
 
-    // Configurar el Pedido 2
+    //  Pedido 2 génerico
     Pedido pedido2;
     pedido2.fabrica = "C";
     pedido2.articulo = "A03";
     pedido2.cantidad = 11;
 
-    // Imprimir Pedido 1
+    // Imprimir Pedido 1 génerico
     qDebug() << "Pedido 1: Fabrica " << pedido1.fabrica << " haciendo " << pedido1.cantidad << " productos de " << pedido1.articulo;
     QThread::sleep(9); //
 
-    // Imprimir Pedido 2
+    // Imprimir Pedido 2 génerico
     qDebug() << "Pedido 2: Fabrica " << pedido2.fabrica << " haciendo " << pedido2.cantidad << " productos de " << pedido2.articulo;
     QThread::sleep(40); //
-    // Imprimir Pedido 3
+
+    // Imprimir Pedido 3 genérico
     qDebug() << "Pedido 3: Listo";
+
+    Alistadores alistadores;
+
+        alistadores.asignar_pedido(1, "A01");
+        alistadores.asignar_pedido(2, "A03");
+        alistadores.asignar_pedido(3, "A02");
+        alistadores.revisar_cola();
+        alistadores.esperar_trabajo_terminado();
+
+
 }
 
 Proyecto_ED::~Proyecto_ED()
@@ -100,6 +116,12 @@ void Proyecto_ED::on_B_Balanceador_clicked()
 //***ColaAlisto
 void Proyecto_ED::on_B_ColaAlisto_clicked()
 {
+
+
+
+
+
+
     qDebug() << "Muestra la cola de Cola de Alisto";
 }
 

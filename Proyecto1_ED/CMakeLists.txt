@@ -35,6 +35,7 @@ set(PROJECT_SOURCES
         alistadores.h
         GenerarFacturasThread.h
         AsignarPedidoThread.h
+        calcularTiempo.cpp
 
 )
 

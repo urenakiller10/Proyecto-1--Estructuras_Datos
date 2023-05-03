@@ -1,7 +1,0 @@
-1
-004
-A01	
-C01	12
-A01	12
-C01	12
-05/01/23 22:30:04 La cantidad del producto no es entero

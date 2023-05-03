@@ -20,14 +20,14 @@ public:
         srand(time(nullptr));
         QDir::setCurrent(QCoreApplication::applicationDirPath());
         int numFactura = 1;
-        while (!pedidos.empty() && numFactura <= 4 ) {
+        while (!pedidos.empty() && numFactura <= 3 ) {
             // Obtener el siguiente pedido de la cola
             std::string pedido = pedidos.front();
             pedidos.pop();
 
             // Construir el nombre del archivo de texto
             std::string nombreArchivo = "Factura" + std::to_string(numFactura) + ".txt";
-            int numAlistador = rand() % 6 + 1;
+            int numAlistador = rand() % 3 + 1;
 
             // Crear el archivo de texto y escribir el contenido
             std::ofstream archivo(nombreArchivo);

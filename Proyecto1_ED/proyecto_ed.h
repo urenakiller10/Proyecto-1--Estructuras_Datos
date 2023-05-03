@@ -11,6 +11,7 @@
 #include "includes.h"
 #include "BalanceadorDecisiones.h"
 #include "ColaFabricas.h"
+#include "Alistadores.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Proyecto_ED; }
@@ -28,6 +29,7 @@ public:
     listaSimple clientes;
     listaDoble articulos;
     QMutex mutexPedidos;
+   // Alistadores alistadores;
 
 
 

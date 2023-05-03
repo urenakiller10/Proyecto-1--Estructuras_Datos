@@ -12,7 +12,7 @@
 #include "auxiliaries.h"
 #include "pedidos.h"
 #include "QMutex"
-
+#include "Alistadores.h"
 #include <filesystem> //https://en.cppreference.com/w/cpp/filesystem/directory_iterator
 #include <iostream>
 #include <string>

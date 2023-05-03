@@ -202,7 +202,7 @@ struct listaDoble{
             string cantidad = linea.substr(pos1, pos2 - pos1); //Esta
             pos1 = pos2 + 1;
             pos2 = linea.find('\t', pos1);
-            string tiempo = linea.substr(pos1, pos2 - pos1); //Esta
+            string tiempox = linea.substr(pos1, pos2 - pos1); //Esta
             pos1 = pos2 + 1;
             pos2 = linea.find('\t', pos1);
             string categoria = linea.substr(pos1, pos2-pos1);
@@ -216,8 +216,8 @@ struct listaDoble{
                 //Aqui tira el error y croma todo
             }
 
-            if(isInt(tiempo)){
-                tiempoFab = stoi(tiempo);
+            if(isInt(tiempox)){
+                tiempoFab = stoi(tiempox);
             } else{
                 //Aqui tira error y croma
                 cout << "EL TIEMPO NO ES UN NUMERO" <<endl;
